@@ -7,7 +7,7 @@ import birthChartImg from "@/assets/birth-chart.jpg";
 
 import manuscriptImg from "@/assets/manuscript.jpg";
 import baniImg from "@/assets/bani.jpg";
-import lotusImg from "@/assets/lotus.jpg";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
