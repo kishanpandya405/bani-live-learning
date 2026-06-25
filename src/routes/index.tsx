@@ -216,7 +216,7 @@ function Outcome3() {
         <span key={n} className="absolute text-[11px] pointer-events-none select-none hidden md:block" style={{ color: "rgba(184,149,106,0.08)", top: `${10 + i * 10}%`, left: i % 2 ? "auto" : "2%", right: i % 2 ? "2%" : "auto", writingMode: "vertical-rl" }}>{n}</span>
       ))}
       <div className="relative max-w-[900px] mx-auto text-center">
-        <Eyebrow withLines>Outcome #3</Eyebrow>
+        <Eyebrow withLines>{"\n"}</Eyebrow>
         <h2 className="font-display mt-6 text-[34px] md:text-[52px] leading-[1.1]" style={{ color: "var(--ink)" }}>
           Understand the <span className="italic" style={{ color: "var(--gold)" }}>Action - Reaction Impact</span> of how your karma moves across lifecycles
         </h2>
