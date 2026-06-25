@@ -97,11 +97,11 @@ function Hero() {
       <div className="relative max-w-[900px] mx-auto px-6 md:px-12 py-16 md:py-24 text-center">
         <Eyebrow withLines>Vedic Astrology Beginner Course</Eyebrow>
         <h1 className="font-display mt-8 text-[44px] md:text-[68px] leading-[1.05]" style={{ color: "var(--ink)" }}>
-          Learn Basic Vedic Astrology to{" "}
-          <span className="italic" style={{ color: "var(--gold)" }}>Understand Karma, Free Will &amp; Planetary Influences!</span>
+          Learn Vedic Astrology to Understand Karma,{" "}
+          <span className="italic" style={{ color: "var(--gold)" }}>Free Will &amp; Your own birth chart</span>
         </h1>
         <p className="mt-6 text-base md:text-[16px] max-w-[640px] mx-auto leading-[1.7]" style={{ color: "var(--brown)" }}>
-          A beginner-friendly introduction to Vedic Astrology for deeper self-awareness, spiritual insight, and a strong Jyotish foundation—guided by Bani Singh Chaddha, with 16 years of expertise.
+          A structured, beginner-friendly course on Vedic Astrology for deeper self-awareness, spiritual insight, and a strong Jyotish foundation—guided by Bani Singh Chaddha, with 16 + years of expertise.
         </p>
 
         <div className="mt-10 grid grid-cols-2 md:grid-cols-5 gap-y-6 max-w-[1000px] mx-auto">
@@ -140,7 +140,7 @@ function Hero() {
 
 function Stats() {
   const stats = [
-    ["2,400+", "Students Taught"],
+    ["240+", "Students Taught"],
     ["4.9 / 5", "Course Rating"],
     ["18", "Batches Completed"],
     ["94%", "Reported Increased Self-Knowledge"],
@@ -169,7 +169,7 @@ function Outcome1() {
       <div className="max-w-[1200px] mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center">
         <img src={birthChartImg} alt="Vedic birth chart" loading="lazy" className="rounded-2xl w-full aspect-[4/3] object-cover" style={{ boxShadow: "0 20px 60px rgba(28,28,28,0.10)" }} />
         <div>
-          <Eyebrow>—— Outcome #1</Eyebrow>
+          <Eyebrow>{"\n"}</Eyebrow>
           <h2 className="font-display mt-4 text-[36px] md:text-[48px] leading-tight" style={{ color: "var(--ink)" }}>
             Learn <span className="italic" style={{ color: "var(--gold)" }}>Birth Chart Basics</span> :<br />
             The real reason why patterns keep repeating in life!
@@ -199,10 +199,10 @@ function PullQuote() {
     <section className="py-20 md:py-24 px-6 md:px-12 text-center" style={{ background: "var(--ivory)" }}>
       <img src={lotusImg} alt="" loading="lazy" className="w-20 h-20 rounded-full mx-auto mb-8 object-cover" />
       <p className="font-display italic mx-auto max-w-[900px] text-[28px] md:text-[44px] leading-[1.3]" style={{ color: "var(--gold)" }}>
-        'Your birth chart is not fate. It is a map and maps exist to be read as framework for understanding your soul's journey.'
+        {"\n"}
       </p>
       <p className="mt-8 text-[15px]" style={{ color: "var(--brown)" }}>
-        — <span className="font-display italic text-lg">Bani Singh Chaddha</span>
+        {"\n"}
       </p>
     </section>
   );
