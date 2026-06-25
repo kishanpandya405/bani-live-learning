@@ -7,7 +7,7 @@ import birthChartImg from "@/assets/birth-chart.jpg";
 
 import manuscriptImg from "@/assets/manuscript.jpg";
 import baniImg from "@/assets/bani.jpg";
-import lotusImg from "@/assets/lotus.jpg";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -194,19 +194,6 @@ function Outcome1() {
   );
 }
 
-function PullQuote() {
-  return (
-    <section className="py-20 md:py-24 px-6 md:px-12 text-center" style={{ background: "var(--ivory)" }}>
-      <img src={lotusImg} alt="" loading="lazy" className="w-20 h-20 rounded-full mx-auto mb-8 object-cover" />
-      <p className="font-display italic mx-auto max-w-[900px] text-[28px] md:text-[44px] leading-[1.3]" style={{ color: "var(--gold)" }}>
-        {"\n"}
-      </p>
-      <p className="mt-8 text-[15px]" style={{ color: "var(--brown)" }}>
-        {"\n"}
-      </p>
-    </section>
-  );
-}
 
 
 function Outcome3() {
@@ -582,7 +569,6 @@ function Page() {
         <Hero />
         <Stats />
         <Outcome1 />
-        <PullQuote />
         <Outcome3 />
         <Topics />
         <MeetTeacher />
