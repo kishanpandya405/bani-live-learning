@@ -4,7 +4,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import { LeadModalProvider, useLeadModal } from "@/components/LeadModal";
 import { Countdown } from "@/components/Countdown";
 import birthChartImg from "@/assets/birth-chart.jpg";
-import astrolabeImg from "@/assets/astrolabe.jpg";
+
 import manuscriptImg from "@/assets/manuscript.jpg";
 import baniImg from "@/assets/bani.jpg";
 import lotusImg from "@/assets/lotus.jpg";
@@ -208,32 +208,6 @@ function PullQuote() {
   );
 }
 
-function Outcome2() {
-  return (
-    <section className="relative min-h-[80vh] flex items-center" style={{ background: "#0A1119" }}>
-      <img src={astrolabeImg} alt="" loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
-      <div className="absolute inset-0" style={{ background: "rgba(10,15,25,0.65)" }} />
-      <div className="relative max-w-[1200px] mx-auto w-full px-6 md:px-12 py-20 md:py-24 flex md:justify-end">
-        <div className="max-w-[560px]">
-          <Eyebrow light>—— Outcome #2</Eyebrow>
-          <h2 className="font-display mt-4 text-[36px] md:text-[52px] leading-[1.05]" style={{ color: "var(--linen)" }}>
-            Navigate The Internal Map you were born with.
-          </h2>
-          <ul className="mt-8 space-y-3 text-[14px] leading-[1.8] list-disc pl-5" style={{ color: "rgba(242,237,230,0.78)" }}>
-            <li>Decode your chart using Bani's proprietary method</li>
-            <li>Learn in jargon-free, conversational language</li>
-            <li>Use your chart to make decisions with clarity and direction</li>
-            <li>Connect planetary periods to real life events</li>
-          </ul>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <CTAJoin variant="light" />
-            <CTACallback variant="ghost" />
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
 
 function Outcome3() {
   return (
@@ -609,7 +583,6 @@ function Page() {
         <Stats />
         <Outcome1 />
         <PullQuote />
-        <Outcome2 />
         <Outcome3 />
         <Topics />
         <MeetTeacher />
