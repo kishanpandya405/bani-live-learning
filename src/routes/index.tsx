@@ -6,7 +6,7 @@ import { Countdown } from "@/components/Countdown";
 import birthChartImg from "@/assets/birth-chart.jpg";
 
 import manuscriptImg from "@/assets/manuscript.jpg";
-import baniImg from "@/assets/bani.jpg";
+import baniAsset from "@/assets/bani.webp.asset.json";
 
 
 export const Route = createFileRoute("/")({
