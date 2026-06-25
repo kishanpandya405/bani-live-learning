@@ -6,7 +6,7 @@ import { Countdown } from "@/components/Countdown";
 import birthChartImg from "@/assets/birth-chart.jpg";
 
 import manuscriptImg from "@/assets/manuscript.jpg";
-import baniImg from "@/assets/bani.jpg";
+import baniAsset from "@/assets/bani.webp.asset.json";
 
 
 export const Route = createFileRoute("/")({
@@ -281,7 +281,7 @@ function MeetTeacher() {
       <UrgencyBar />
       <section className="py-20 md:py-24 px-6 md:px-12" style={{ background: "var(--ivory)" }}>
         <div className="max-w-[1200px] mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-start">
-          <img src={baniImg} alt="Bani Singh Chadha" loading="lazy" className="rounded-2xl w-full object-cover aspect-[4/5]" />
+          <img src={baniAsset.url} alt="Bani Singh Chadha" loading="lazy" className="rounded-2xl w-full object-cover aspect-[4/5]" />
           <div>
             <Eyebrow>—— Meet the Teacher</Eyebrow>
             <h2 className="font-display italic mt-4 text-[44px] md:text-[52px]" style={{ color: "var(--gold)" }}>Bani Singh Chadha</h2>
