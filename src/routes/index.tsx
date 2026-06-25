@@ -233,11 +233,15 @@ function Outcome3() {
 }
 
 const TOPICS = [
+  "Introduction to Jyotish",
+  "\n",
   "01. Karma, Fate & Free Will\nWhat Jyotish says about destiny, free will, and what can truly be changed.\n\n\n02. How Planets Influence Your Life\nUnderstand the logic behind planetary influences—not superstition, but the principles Jyotish is built on.",
   "03. Reading a Birth Chart\nLearn to decode a horoscope step by step, beginning with your own chart.The Nine Planets",
   "04. Zodiac Signs & Houses\nExplore the structure of the birth chart, what each house represents, and how they work together.",
   "05. The Science Behind Vedic Rituals\nUnderstand what happens during a puja, mantra, or Vedic practice—and the principles behind these traditions.",
   "06. Practical Remedies & Lifestyle Changes\n\nDiscover actionable remedies, including mantra, diet, daily routines, and gemstones, to help navigate challenging planetary influences.Understanding Dashas",
+  "\n",
+  "\n",
 ];
 
 function Topics() {
