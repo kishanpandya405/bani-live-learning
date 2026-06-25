@@ -285,22 +285,26 @@ function MeetTeacher() {
           <div>
             <Eyebrow>—— Meet the Teacher</Eyebrow>
             <h2 className="font-display italic mt-4 text-[44px] md:text-[52px]" style={{ color: "var(--gold)" }}>Bani Singh Chadha</h2>
+            <p className="mt-2 font-display text-[18px] md:text-[20px]" style={{ color: "var(--brown)" }}>Jyotish Acharya</p>
             <div className="flex flex-wrap gap-2.5 mt-5">
               {["15+ Years of Experience", "Ex - NDTV", "Cardiff University"].map((c) => (
                 <span key={c} className="rounded-full px-4 py-1.5 text-[11px] uppercase" style={{ border: "1px solid var(--stone)", color: "var(--brown)", letterSpacing: "0.1em" }}>{c}</span>
               ))}
             </div>
-            <p className="mt-6 text-[15px] leading-[1.7]" style={{ color: "var(--brown)" }}>
-              For over seven years, Bani has taught Jyotish full-time to students worldwide through courses, workshops, and talks. She teaches Vedic Astrology as a spiritual tradition rooted in mantra, sadhana, and the timeless wisdom of the rishis.
-            </p>
+            <div className="mt-6 space-y-5 text-[15px] leading-[1.7]" style={{ color: "var(--brown)" }}>
+              <p>Bani has taught Jyotish full-time for seven years — courses, workshops, and talks reaching students across the world. She teaches from within a living lineage: the parampara of 16th-century Odia saint-poet Shri Achyutananda Das, carried forward through generations of the Rath family. This is not self-taught astrology.</p>
+              <p>Before Jyotish, she spent 13 years in broadcast journalism at NDTV — producing flagship programming and anchoring news. That background shapes how she teaches: rigorously, without filler, for people who ask hard questions.</p>
+            </div>
             <ul className="mt-8 space-y-4">
               {[
-                ["📜", "Jyotish Acharya — Bharatiya Vidya Bhavan (2009)"],
-                ["📖", "Advanced studies under Shri S. Ganesh, Sringeri Sharada Peetham lineage"],
-                ["✦", "Currently in the parampara of Shri Achyutananda Das under Pandit Sanjay Rath & Sarbani Rath"],
+                ["", "Jyotish Acharya, Bharatiya Vidya Bhavan (2009)"],
+                ["", "Advanced studies under Shri S. Ganesh, Sringeri Sharada Peetham lineage"],
+                ["", "Parampara of Shri Achyutananda Das under Pandit Sanjay Rath & Sarbani Rath"],
+                ["", "13 years at NDTV — producer & anchor, We the People with Barkha Dutt"],
+                ["", "Lady Shri Ram College · Cardiff University · Welham Girls'"],
               ].map(([ic, t]) => (
                 <li key={t} className="flex items-start gap-3 text-[14px]" style={{ color: "var(--brown)" }}>
-                  <span style={{ color: "var(--gold)" }}>{ic}</span><span>{t}</span>
+                  {ic && <span style={{ color: "var(--gold)" }}>{ic}</span>}<span>{t}</span>
                 </li>
               ))}
             </ul>
