@@ -233,28 +233,32 @@ function Outcome3() {
 }
 
 const TOPICS = [
-  "Introduction to Jyotish", "Understanding Karma", "Fate vs Free Will", "The Nine Planets",
-  "The Twelve Zodiac Signs", "The Twelve Houses", "Understanding Dashas", "Life Patterns", "Karmic Bondages",
+  "01. Karma, Fate & Free Will\nWhat Jyotish says about destiny, free will, and what can truly be changed.\n\n\n02. How Planets Influence Your Life\nUnderstand the logic behind planetary influences—not superstition, but the principles Jyotish is built on.",
+  "03. Reading a Birth Chart\nLearn to decode a horoscope step by step, beginning with your own chart.The Nine Planets",
+  "04. Zodiac Signs & Houses\nExplore the structure of the birth chart, what each house represents, and how they work together.",
+  "05. The Science Behind Vedic Rituals\nUnderstand what happens during a puja, mantra, or Vedic practice—and the principles behind these traditions.",
+  "06. Practical Remedies & Lifestyle Changes\n\nDiscover actionable remedies, including mantra, diet, daily routines, and gemstones, to help navigate challenging planetary influences.Understanding Dashas",
 ];
 
 function Topics() {
-  const [active, setActive] = useState(1);
+  const [active, setActive] = useState(0);
   return (
     <section className="py-20 md:py-24 px-6 md:px-12" style={{ background: "var(--ink)" }}>
       <div className="max-w-[1200px] mx-auto grid md:grid-cols-5 gap-12">
         <div className="md:col-span-2">
           <Eyebrow>—— Topics to be Covered</Eyebrow>
           <h2 className="font-display mt-4 text-[36px] md:text-[48px] leading-[1.1]" style={{ color: "var(--linen)" }}>
-            Basic Topics you'll learn, session by session.
+            15 live sessions. Every question answered in class.
           </h2>
           <ul className="mt-8">
             {TOPICS.map((t, i) => (
-              <li key={t} onClick={() => setActive(i)} className="cursor-pointer py-3 text-[15px] transition-all" style={{
+              <li key={i} onClick={() => setActive(i)} className="cursor-pointer py-4 text-[15px] transition-all" style={{
                 color: "var(--linen)",
                 opacity: active === i ? 1 : 0.5,
                 borderBottom: "1px solid rgba(255,255,255,0.06)",
                 borderLeft: active === i ? "3px solid var(--gold)" : "3px solid transparent",
                 paddingLeft: "12px",
+                whiteSpace: "pre-line",
               }}>{t}</li>
             ))}
           </ul>
