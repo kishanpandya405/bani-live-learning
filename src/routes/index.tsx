@@ -272,7 +272,7 @@ function Topics() {
               </button>
             </div>
           </div>
-          <p className="font-display text-2xl mt-6" style={{ color: "var(--linen)" }}>{TOPICS[active]}</p>
+          <p className="font-display text-2xl mt-6" style={{ color: "var(--linen)" }}>{"\n"}</p>
         </div>
       </div>
     </section>
