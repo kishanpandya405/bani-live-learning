@@ -569,7 +569,6 @@ function Page() {
         <Hero />
         <Stats />
         <Outcome1 />
-        <PullQuote />
         <Outcome3 />
         <Topics />
         <MeetTeacher />
