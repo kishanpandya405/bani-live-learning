@@ -245,39 +245,22 @@ const TOPICS = [
 ];
 
 function Topics() {
-  const [active, setActive] = useState(0);
   return (
     <section className="py-20 md:py-24 px-6 md:px-12" style={{ background: "var(--ink)" }}>
-      <div className="max-w-[1200px] mx-auto grid md:grid-cols-5 gap-12">
-        <div className="md:col-span-2">
-          <Eyebrow>—— Topics to be Covered</Eyebrow>
-          <h2 className="font-display mt-4 text-[36px] md:text-[48px] leading-[1.1]" style={{ color: "var(--linen)" }}>
-            15 live sessions. Every question answered in class.
-          </h2>
-          <ul className="mt-8">
-            {TOPICS.map((t, i) => (
-              <li key={i} onClick={() => setActive(i)} className="cursor-pointer py-4 text-[15px] transition-all" style={{
-                color: "var(--linen)",
-                opacity: active === i ? 1 : 0.5,
-                borderBottom: "1px solid rgba(255,255,255,0.06)",
-                borderLeft: active === i ? "3px solid var(--gold)" : "3px solid transparent",
-                paddingLeft: "12px",
-                whiteSpace: "pre-line",
-              }}>{t}</li>
-            ))}
-          </ul>
-        </div>
-        <div className="md:col-span-3">
-          {/* TODO: Replace with actual video src */}
-          <div className="relative rounded-2xl overflow-hidden aspect-video" style={{ background: "#2A2218" }}>
-            <div className="absolute inset-0 flex items-center justify-center">
-              <button aria-label="play" className="w-16 h-16 rounded-full flex items-center justify-center" style={{ background: "rgba(184,149,106,0.15)", border: "1.5px solid var(--gold)" }}>
-                <span style={{ color: "var(--gold)", fontSize: 22 }}>▶</span>
-              </button>
-            </div>
-          </div>
-          <p className="font-display text-2xl mt-6" style={{ color: "var(--linen)" }}>{"\n"}</p>
-        </div>
+      <div className="max-w-[900px] mx-auto">
+        <Eyebrow>—— Topics to be Covered</Eyebrow>
+        <h2 className="font-display mt-4 text-[36px] md:text-[48px] leading-[1.1]" style={{ color: "var(--linen)" }}>
+          15 live sessions. Every question answered in class.
+        </h2>
+        <ul className="mt-8">
+          {TOPICS.map((t, i) => (
+            <li key={i} className="py-4 text-[15px]" style={{
+              color: "var(--linen)",
+              borderBottom: "1px solid rgba(255,255,255,0.06)",
+              whiteSpace: "pre-line",
+            }}>{t}</li>
+          ))}
+        </ul>
       </div>
     </section>
   );
