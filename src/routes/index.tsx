@@ -465,7 +465,7 @@ function WhatYouNeed() {
           </div>
           <div className="mt-10 flex flex-col items-start gap-3">
             <button onClick={open} className="btn-pill-light">Join Batch Now →</button>
-            <a href={WA_TRIAL} target="_blank" rel="noreferrer" className="btn-pill-ghost inline-block">✦ Register for Free Trial →</a>
+            <button onClick={open} className="btn-pill-ghost inline-block">✦ Register for Free Trial →</button>
             <p className="text-[11px] mt-2" style={{ color: "rgba(242,237,230,0.45)" }}>₹15,000 + GST · Batch begins 13 August 2026 · Seats closing 15 July</p>
           </div>
         </div>
