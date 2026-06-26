@@ -350,8 +350,8 @@ function PricingCard() {
           <p className="text-[13px] mt-2" style={{ color: "rgba(242,237,230,0.45)" }}>One-time payment · Lifetime access to recordings · Live cohort</p>
           <div className="mt-8 pt-6 grid grid-cols-1 sm:grid-cols-3 gap-6" style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}>
             {[
-              ["🎁","Free Birth Chart PDF","Receive our Birth Chart Reading Introduction PDF instantly in your inbox."],
-              ["🏆","Certificate","Digital certificate from Bani on completion of the course."],
+              ["✦", "Practical Knowledge", "Every concept taught in class is grounded in years of real-life chart analysis and practical application—not just theory."],
+              ["🏆", "Certificate", "Digital certificate from Bani on completion of the course."],
               ["💬","WhatsApp Community","Get your doubts answered by Bani in a dedicated group."],
             ].map(([ic,t,b]) => (
               <div key={t}>
