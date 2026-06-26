@@ -74,6 +74,7 @@ function Navbar() {
 }
 
 function TrialBar() {
+  const { open } = useLeadModal();
   return (
     <div className="fixed bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 z-[99] w-[calc(100%-1rem)] md:w-auto md:max-w-[min(1200px,calc(100%-7rem))] px-2 md:px-0">
       <div className="relative rounded-full shadow-2xl" style={{ background: "var(--terra)" }}>
@@ -82,7 +83,7 @@ function TrialBar() {
           <span className="font-display italic text-base md:text-xl" style={{ color: "var(--linen)" }}>Trail Class Registrations Ending Soon!</span>
           <div className="flex items-center gap-4 md:gap-6">
             <Countdown />
-            <a href={WA_TRIAL} target="_blank" rel="noreferrer" className="text-[13px] uppercase font-medium whitespace-nowrap" style={{ color: "var(--linen)", letterSpacing: "0.1em" }}>Register Now →</a>
+            <button onClick={open} className="text-[13px] uppercase font-medium whitespace-nowrap" style={{ color: "var(--linen)", letterSpacing: "0.1em" }}>Register Now →</button>
           </div>
         </div>
       </div>
