@@ -478,7 +478,7 @@ function FAQ() {
     ["Do I need prior astrology knowledge?", "No. The course is designed for complete beginners starting from zero."],
     ["Will recordings be available?", "Yes. All sessions are recorded and available on Google Drive for 3 months."],
     ["How are classes conducted?", "Live on Zoom, every Tuesday and Thursday, 12–1 PM IST."],
-    ["What is the course fee?", "₹15,000 + GST. One-time payment with lifetime access to recordings."],
+    ["What is the course fee?", "₹15,000 + GST i.e 17700 INR.\u00a0"],
     ["Is there a free trial?", "Yes! Register for the free trial class on 13 August 2026 — no payment required."],
     ["How do I get my birth chart?", "You'll receive a free Birth Chart PDF in your inbox after registration."],
   ];
