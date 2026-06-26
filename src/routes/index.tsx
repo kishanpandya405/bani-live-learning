@@ -7,6 +7,9 @@ import birthChartImg from "@/assets/birth-chart.jpg";
 
 import manuscriptImg from "@/assets/manuscript.jpg";
 import baniAsset from "@/assets/bani.webp.asset.json";
+import testimonial1 from "@/assets/testimonial-1.mp4.asset.json";
+import testimonial2 from "@/assets/testimonial-2.mp4.asset.json";
+import testimonial3 from "@/assets/testimonial-3.mp4.asset.json";
 
 
 export const Route = createFileRoute("/")({
