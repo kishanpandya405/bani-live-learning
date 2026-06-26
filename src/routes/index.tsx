@@ -295,16 +295,17 @@ function MeetTeacher() {
               <p>Bani has taught Jyotish full-time for seven years — courses, workshops, and talks reaching students across the world. She teaches from within a living lineage: the parampara of 16th-century Odia saint-poet Shri Achyutananda Das, carried forward through generations of the Rath family. This is not self-taught astrology.</p>
               <p>Before Jyotish, she spent 13 years in broadcast journalism at NDTV — producing flagship programming and anchoring news. That background shapes how she teaches: rigorously, without filler, for people who ask hard questions.</p>
             </div>
-            <ul className="mt-8 space-y-4">
+            <ul className="mt-6 grid sm:grid-cols-2 gap-x-6 gap-y-3">
               {[
-                ["", "Jyotish Acharya, Bharatiya Vidya Bhavan (2009)"],
-                ["", "Advanced studies under Shri S. Ganesh, Sringeri Sharada Peetham lineage"],
-                ["", "Parampara of Shri Achyutananda Das under Pandit Sanjay Rath & Sarbani Rath"],
-                ["", "13 years at NDTV — producer & anchor, We the People with Barkha Dutt"],
-                ["", "Lady Shri Ram College · Cardiff University · Welham Girls'"],
-              ].map(([ic, t]) => (
-                <li key={t} className="flex items-start gap-3 text-[14px]" style={{ color: "var(--brown)" }}>
-                  {ic && <span style={{ color: "var(--gold)" }}>{ic}</span>}<span>{t}</span>
+                "Jyotish Acharya, Bharatiya Vidya Bhavan (2009)",
+                "Advanced studies under Shri S. Ganesh, Sringeri Sharada Peetham lineage",
+                "Parampara of Shri Achyutananda Das under Pandit Sanjay Rath & Sarbani Rath",
+                "13 years at NDTV — producer & anchor, We the People with Barkha Dutt",
+                "Lady Shri Ram College · Cardiff University · Welham Girls'",
+              ].map((t) => (
+                <li key={t} className="flex items-start gap-2 text-[14px]" style={{ color: "var(--brown)" }}>
+                  <span style={{ color: "var(--gold)" }}>•</span>
+                  <span>{t}</span>
                 </li>
               ))}
             </ul>
