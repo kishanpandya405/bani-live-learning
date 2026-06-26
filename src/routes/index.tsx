@@ -7,6 +7,9 @@ import birthChartImg from "@/assets/birth-chart.jpg";
 
 import manuscriptImg from "@/assets/manuscript.jpg";
 import baniAsset from "@/assets/bani.webp.asset.json";
+import testimonial1 from "@/assets/testimonial-1.mp4.asset.json";
+import testimonial2 from "@/assets/testimonial-2.mp4.asset.json";
+import testimonial3 from "@/assets/testimonial-3.mp4.asset.json";
 
 
 export const Route = createFileRoute("/")({
@@ -380,14 +383,15 @@ function PricingCard() {
   );
 }
 
-type Testimonial = { type: "A" | "B"; name: string; role: string; quote?: string; img: number };
+type Testimonial = { type: "A" | "B"; name: string; role: string; quote?: string; img: number; video?: string };
 const TESTIMONIALS: Testimonial[] = [
   { type: "A", name: "Priya M.", role: "Student · Mumbai", quote: "I finally understand patterns I've been repeating for years. The birth chart session alone changed the way I see myself.", img: 1 },
-  { type: "B", name: "Ananya R.", role: "Student · Delhi", img: 2 },
+  { type: "B", name: "Ananya R.", role: "Student · Delhi", img: 2, video: testimonial1.url },
   { type: "A", name: "Deepika S.", role: "Student · Bengaluru", quote: "Bani teaches in a way no one else does. I've taken other astrology courses. This one landed differently.", img: 3 },
+  { type: "B", name: "Sunita B.", role: "Student · Chennai", img: 6, video: testimonial2.url },
   { type: "A", name: "Rohini K.", role: "Student · Pune", quote: "The karma and lifecycles module was the most clarifying thing I've experienced in years of seeking.", img: 4 },
+  { type: "B", name: "Vandana P.", role: "Student · Kolkata", img: 8, video: testimonial3.url },
   { type: "A", name: "Meera T.", role: "Student · Hyderabad", quote: "As a tarot reader, this gave my practice an entirely new foundation. I recommend it to every reader I know.", img: 5 },
-  { type: "B", name: "Sunita B.", role: "Student · Chennai", img: 6 },
   { type: "A", name: "Kavitha N.", role: "Student · Ahmedabad", quote: "Practical, spiritual, and deeply personal. Bani's teaching style makes complex ideas feel like conversation.", img: 7 },
 ];
 
@@ -416,17 +420,23 @@ function Testimonials() {
                   </div>
                 </div>
               ) : (
-                /* TODO: Replace background with <video> or thumbnail src when video assets are ready */
-                <div className="w-[360px] min-h-[420px] rounded-2xl relative overflow-hidden" style={{ background: "linear-gradient(135deg, #2A2218 0%, #1C1C1C 100%)" }}>
-                  <img src={`https://i.pravatar.cc/96?img=${t.img}`} alt="" className="absolute top-5 left-5 w-11 h-11 rounded-full" style={{ border: "2px solid rgba(184,149,106,0.6)" }} />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <button aria-label="play" className="w-14 h-14 rounded-full flex items-center justify-center transition-all hover:scale-110" style={{ background: "rgba(184,149,106,0.15)", border: "1.5px solid var(--gold)" }}>
+                <div className="w-[300px] sm:w-[340px] aspect-[9/16] rounded-2xl relative overflow-hidden group" style={{ background: "linear-gradient(135deg, #2A2218 0%, #1C1C1C 100%)" }}>
+                  {t.video ? (
+                    <video
+                      src={t.video}
+                      controls
+                      playsInline
+                      preload="metadata"
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 flex items-center justify-center">
                       <span style={{ color: "var(--gold)" }}>▶</span>
-                    </button>
-                  </div>
-                  <div className="absolute bottom-6 left-6">
+                    </div>
+                  )}
+                  <div className="absolute bottom-0 left-0 right-0 p-5 pointer-events-none" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.75), rgba(0,0,0,0))" }}>
                     <div className="text-[12px] uppercase" style={{ color: "var(--linen)", letterSpacing: "0.14em" }}>{t.name}</div>
-                    <div className="text-[11px] mt-0.5" style={{ color: "rgba(242,237,230,0.6)" }}>{t.role}</div>
+                    <div className="text-[11px] mt-0.5" style={{ color: "rgba(242,237,230,0.7)" }}>{t.role}</div>
                   </div>
                 </div>
               )}
