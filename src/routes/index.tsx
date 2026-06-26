@@ -380,14 +380,15 @@ function PricingCard() {
   );
 }
 
-type Testimonial = { type: "A" | "B"; name: string; role: string; quote?: string; img: number };
+type Testimonial = { type: "A" | "B"; name: string; role: string; quote?: string; img: number; video?: string };
 const TESTIMONIALS: Testimonial[] = [
   { type: "A", name: "Priya M.", role: "Student · Mumbai", quote: "I finally understand patterns I've been repeating for years. The birth chart session alone changed the way I see myself.", img: 1 },
-  { type: "B", name: "Ananya R.", role: "Student · Delhi", img: 2 },
+  { type: "B", name: "Ananya R.", role: "Student · Delhi", img: 2, video: testimonial1.url },
   { type: "A", name: "Deepika S.", role: "Student · Bengaluru", quote: "Bani teaches in a way no one else does. I've taken other astrology courses. This one landed differently.", img: 3 },
+  { type: "B", name: "Sunita B.", role: "Student · Chennai", img: 6, video: testimonial2.url },
   { type: "A", name: "Rohini K.", role: "Student · Pune", quote: "The karma and lifecycles module was the most clarifying thing I've experienced in years of seeking.", img: 4 },
+  { type: "B", name: "Vandana P.", role: "Student · Kolkata", img: 8, video: testimonial3.url },
   { type: "A", name: "Meera T.", role: "Student · Hyderabad", quote: "As a tarot reader, this gave my practice an entirely new foundation. I recommend it to every reader I know.", img: 5 },
-  { type: "B", name: "Sunita B.", role: "Student · Chennai", img: 6 },
   { type: "A", name: "Kavitha N.", role: "Student · Ahmedabad", quote: "Practical, spiritual, and deeply personal. Bani's teaching style makes complex ideas feel like conversation.", img: 7 },
 ];
 
