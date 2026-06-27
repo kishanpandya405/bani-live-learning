@@ -133,9 +133,9 @@ function Hero() {
         </div>
 
         <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs" style={{ color: "var(--brown)" }}>
-          <span>🔵 LIVE ON ZOOM</span>
+          <span className="inline-flex items-center gap-2"><img src={zoomIconAsset.url} alt="Zoom" className="h-4 w-4" />LIVE ON ZOOM</span>
           <span style={{ color: "var(--stone)" }}>·</span>
-          <span>💬 WHATSAPP COMMUNITY INCLUDED</span>
+          <span className="inline-flex items-center gap-2"><img src={whatsappIconAsset.url} alt="WhatsApp" className="h-4 w-4" />WHATSAPP COMMUNITY INCLUDED</span>
         </div>
       </div>
     </section>
