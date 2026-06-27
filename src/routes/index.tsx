@@ -111,7 +111,7 @@ function Hero() {
           A structured, beginner-friendly course on Vedic Astrology for deeper self-awareness, spiritual insight, and a strong Jyotish foundation—guided by Bani Singh Chaddha, with 16 + years of expertise.
         </p>
 
-        <div className="mt-10 grid grid-cols-2 md:grid-cols-5 gap-y-6 max-w-[1000px] mx-auto">
+        <div className="mt-10 rounded-2xl bg-white shadow-sm border grid grid-cols-2 md:grid-cols-5 max-w-[1100px] mx-auto overflow-hidden" style={{ borderColor: "var(--stone)" }}>
           {[
             ["Class Duration", "1 hr (15+ Classes)"],
             ["Timings", "12–1 PM (Tue & Thur)"],
@@ -119,11 +119,11 @@ function Hero() {
             ["No Expertise Req.", "Beginner Friendly"],
             ["Recording Access", "3 Months (G Drive)"],
           ].map(([label, val], i, arr) => (
-            <div key={label} className={`px-4 md:px-6 ${i < arr.length - 1 ? "md:border-r" : ""}`} style={{ borderColor: "var(--stone)" }}>
+            <div key={label} className={`px-4 md:px-6 py-6 text-center ${i < arr.length - 1 ? "md:border-r" : ""}`} style={{ borderColor: "var(--stone)" }}>
               <div className="eyebrow text-[10px]">{label}</div>
-              <div className="font-display text-[24px] md:text-[28px] mt-1" style={{ color: "var(--ink)" }}>
+              <div className="font-display italic text-[18px] md:text-[20px] mt-2" style={{ color: "var(--ink)" }}>
                 {label === "No Expertise Req." ? (
-                  <span className="inline-block rounded-full px-3 py-1 text-sm" style={{ background: "#3D1B3D", color: "#E8D8E8" }}>{val}</span>
+                  <span className="inline-block rounded-md px-3 py-1 text-sm not-italic" style={{ background: "#5B1B47", color: "#F5E6F0" }}>{val}</span>
                 ) : val}
               </div>
             </div>
