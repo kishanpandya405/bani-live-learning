@@ -101,7 +101,7 @@ function TrialBar() {
 function Hero() {
   return (
     <section className="relative overflow-hidden" style={{ backgroundColor: "var(--ivory)", backgroundImage: `url(${heroBgAsset.url})`, backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}>
-      <div className="relative max-w-[900px] mx-auto px-6 md:px-12 py-16 md:py-24 text-center">
+      <div className="relative max-w-[1180px] mx-auto px-6 md:px-12 py-16 md:py-24 text-center">
         <Eyebrow withLines>Vedic Astrology Beginner Course</Eyebrow>
         <h1 className="font-display mt-8 text-[44px] md:text-[68px] leading-[1.05]" style={{ color: "var(--ink)" }}>
           Learn Vedic Astrology to Understand Karma,{" "}
@@ -158,7 +158,7 @@ function Stats() {
       <div className="text-center">
         <Eyebrow withLines>Success Stories by the Numbers</Eyebrow>
       </div>
-      <div className="max-w-[1200px] mx-auto mt-12 grid grid-cols-2 md:grid-cols-5 gap-y-8">
+      <div className="max-w-[1366px] mx-auto mt-12 grid grid-cols-2 md:grid-cols-5 gap-y-8">
         {stats.map(([num, label], i) => (
           <div key={label} className={`text-center px-4 ${i < stats.length - 1 ? "md:border-r" : ""}`} style={{ borderColor: "rgba(255,255,255,0.08)" }}>
             <div className="font-display text-5xl md:text-6xl" style={{ color: "var(--ivory)" }}>{num}</div>
@@ -173,7 +173,7 @@ function Stats() {
 function Outcome1() {
   return (
     <section className="py-20 md:py-24 px-6 md:px-12" style={{ background: "var(--ivory)" }}>
-      <div className="max-w-[1200px] mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+      <div className="max-w-[1366px] mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center">
         <img src={birthChartImg} alt="Vedic birth chart" loading="lazy" className="rounded-2xl w-full aspect-[4/3] object-cover" style={{ boxShadow: "0 20px 60px rgba(28,28,28,0.10)" }} />
         <div>
           <Eyebrow>{"\n"}</Eyebrow>
@@ -287,7 +287,7 @@ function MeetTeacher() {
     <>
       <UrgencyBar />
       <section className="py-20 md:py-24 px-6 md:px-12" style={{ background: "var(--ivory)" }}>
-        <div className="max-w-[1200px] mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-start">
+        <div className="max-w-[1366px] mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-start">
           <img src={baniAsset.url} alt="Bani Singh Chadha" loading="lazy" className="rounded-2xl w-full object-cover aspect-[4/5]" />
           <div>
             <Eyebrow>—— Meet the Teacher</Eyebrow>
@@ -403,7 +403,7 @@ function Testimonials() {
   const [emblaRef] = useEmblaCarousel({ dragFree: true, loop: false });
   return (
     <section className="py-20 md:py-24" style={{ background: "var(--ivory)" }}>
-      <div className="max-w-[1200px] mx-auto px-6 md:px-12">
+      <div className="max-w-[1366px] mx-auto px-6 md:px-12">
         <Eyebrow>Testimonials</Eyebrow>
         <h2 className="font-display mt-4 text-[38px] md:text-[56px] leading-[1.05]" style={{ color: "var(--ink)" }}>
           Don't take our word for it.<br />Hear it from our students.
@@ -447,7 +447,7 @@ function Testimonials() {
           ))}
         </div>
       </div>
-      <div className="max-w-[1200px] mx-auto px-6 md:px-12 mt-12">
+      <div className="max-w-[1366px] mx-auto px-6 md:px-12 mt-12">
         <button onClick={open} className="btn-pill-dark">Join 2,400+ Students — Enrol Now →</button>
       </div>
     </section>
