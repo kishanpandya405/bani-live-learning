@@ -11,6 +11,8 @@ import heroBgAsset from "@/assets/hero-bg.png.asset.json";
 import testimonial1 from "@/assets/testimonial-1.mp4.asset.json";
 import testimonial2 from "@/assets/testimonial-2.mp4.asset.json";
 import testimonial3 from "@/assets/testimonial-3.mp4.asset.json";
+import zoomIconAsset from "@/assets/zoom-icon.png.asset.json";
+import whatsappIconAsset from "@/assets/whatsapp-icon.png.asset.json";
 
 
 export const Route = createFileRoute("/")({
@@ -133,9 +135,9 @@ function Hero() {
         </div>
 
         <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs" style={{ color: "var(--brown)" }}>
-          <span>🔵 LIVE ON ZOOM</span>
+          <span className="inline-flex items-center gap-2"><img src={zoomIconAsset.url} alt="Zoom" className="h-4 w-4" />LIVE ON ZOOM</span>
           <span style={{ color: "var(--stone)" }}>·</span>
-          <span>💬 WHATSAPP COMMUNITY INCLUDED</span>
+          <span className="inline-flex items-center gap-2"><img src={whatsappIconAsset.url} alt="WhatsApp" className="h-4 w-4" />WHATSAPP COMMUNITY INCLUDED</span>
         </div>
       </div>
     </section>
