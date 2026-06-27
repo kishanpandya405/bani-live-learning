@@ -82,18 +82,19 @@ function Navbar() {
 function TrialBar() {
   const { open } = useLeadModal();
   return (
-    <div className="fixed bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 z-[99] w-[calc(100%-1rem)] md:w-auto md:max-w-[min(1200px,calc(100%-7rem))] px-2 md:px-0">
-      <div className="relative rounded-full shadow-2xl" style={{ background: "var(--terra)" }}>
-        <span className="absolute -top-3 left-6 inline-block rounded-full px-3 py-1 text-[10px] uppercase font-medium shadow" style={{ background: "var(--forest)", color: "var(--gold)", letterSpacing: "0.14em" }}>✦ FREE | ✦ NO PAYMENT REQUIRED.</span>
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 px-5 md:px-8 py-3 md:py-3">
-          <span className="font-display italic text-base md:text-xl" style={{ color: "var(--linen)" }}>Trail Class Registrations Ending Soon!</span>
-          <div className="flex items-center gap-4 md:gap-6">
+    <div className="fixed bottom-0 left-0 right-0 z-[99]">
+      <div className="relative w-full shadow-2xl" style={{ background: "var(--terra)" }}>
+        <span className="absolute -top-3 left-1/2 -translate-x-1/2 md:left-8 md:translate-x-0 inline-block rounded-md px-3 py-1 text-[10px] uppercase font-medium shadow whitespace-nowrap" style={{ background: "var(--forest)", color: "var(--gold)", letterSpacing: "0.14em" }}>✦ FREE | ✦ NO PAYMENT REQUIRED.</span>
+        <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row md:items-center justify-between gap-3 px-5 md:px-10 py-4 md:py-5">
+          <span className="font-display italic text-base md:text-2xl" style={{ color: "var(--gold)" }}>Trail Class Registrations Ending Soon!</span>
+          <div className="flex items-center gap-4 md:gap-8">
             <Countdown />
             <button onClick={open} className="text-[13px] uppercase font-medium whitespace-nowrap" style={{ color: "var(--linen)", letterSpacing: "0.1em" }}>Register Now →</button>
           </div>
         </div>
       </div>
     </div>
+
   );
 }
 
