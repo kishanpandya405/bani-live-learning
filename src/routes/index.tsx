@@ -7,6 +7,7 @@ import birthChartImg from "@/assets/birth-chart.jpg";
 
 import manuscriptImg from "@/assets/manuscript.jpg";
 import baniAsset from "@/assets/bani.webp.asset.json";
+import heroBgAsset from "@/assets/hero-bg.png.asset.json";
 import testimonial1 from "@/assets/testimonial-1.mp4.asset.json";
 import testimonial2 from "@/assets/testimonial-2.mp4.asset.json";
 import testimonial3 from "@/assets/testimonial-3.mp4.asset.json";
@@ -96,8 +97,7 @@ function TrialBar() {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden" style={{ background: "var(--ivory)" }}>
-      <div aria-hidden className="absolute inset-0 flex items-center justify-center pointer-events-none select-none" style={{ fontSize: "min(600px,80vw)", color: "rgba(184,149,106,0.05)", lineHeight: 1 }}>ॐ</div>
+    <section className="relative overflow-hidden" style={{ backgroundColor: "var(--ivory)", backgroundImage: `url(${heroBgAsset.url})`, backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}>
       <div className="relative max-w-[900px] mx-auto px-6 md:px-12 py-16 md:py-24 text-center">
         <Eyebrow withLines>Vedic Astrology Beginner Course</Eyebrow>
         <h1 className="font-display mt-8 text-[44px] md:text-[68px] leading-[1.05]" style={{ color: "var(--ink)" }}>
