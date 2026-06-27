@@ -11,6 +11,8 @@ import heroBgAsset from "@/assets/hero-bg.png.asset.json";
 import testimonial1 from "@/assets/testimonial-1.mp4.asset.json";
 import testimonial2 from "@/assets/testimonial-2.mp4.asset.json";
 import testimonial3 from "@/assets/testimonial-3.mp4.asset.json";
+import zoomIconAsset from "@/assets/zoom-icon.png.asset.json";
+import whatsappIconAsset from "@/assets/whatsapp-icon.png.asset.json";
 
 
 export const Route = createFileRoute("/")({
