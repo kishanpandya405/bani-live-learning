@@ -222,11 +222,10 @@ function Stats() {
   const HEADING = "#B89A5A";
   return (
     <section style={{ background: "var(--ink)" }} className="py-16 md:py-20 px-6 md:px-12">
-      <div className="text-center">
-        <div className="eyebrow eyebrow-line" style={{ color: HEADING, ["--eyebrow-rule" as any]: HEADING }}>
-          <style>{`.eyebrow-line.success-rules::before,.eyebrow-line.success-rules::after{background:${HEADING};}`}</style>
-          <span className="success-rules-wrap">Success Stories by the Numbers</span>
-        </div>
+      <div className="text-center flex items-center justify-center gap-3">
+        <span style={{ display: "inline-block", width: 40, height: 1, background: HEADING }} />
+        <span className="eyebrow" style={{ color: HEADING }}>Success Stories by the Numbers</span>
+        <span style={{ display: "inline-block", width: 40, height: 1, background: HEADING }} />
       </div>
       <div className="max-w-[1366px] mx-auto mt-12 grid grid-cols-2 md:grid-cols-5 gap-y-8">
         {stats.map(([num, label], i) => {
