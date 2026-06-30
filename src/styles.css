@@ -25,20 +25,31 @@
   --stone: #E0D8CF;
   --forest: #2C3B2D;
   --terra: #6B3F2A;
+  --brown: #604C0B
 }
 
 @layer base {
-  * { border-color: var(--stone); }
-  html { scroll-behavior: smooth; }
+  * {
+    border-color: var(--stone);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     background-color: var(--ivory);
     color: var(--brown);
     font-family: "DM Sans", sans-serif;
     -webkit-font-smoothing: antialiased;
   }
-  h1, h2, h3, .font-display {
+
+  h1,
+  h2,
+  h3,
+  .font-display {
     font-family: "Cormorant Garamond", serif;
-    font-weight: 400;
+    font-weight: 600;
   }
 }
 
@@ -56,7 +67,7 @@
   display: inline-block;
   width: 40px;
   height: 1px;
-  background: rgba(184,149,106,0.5);
+  background: rgba(184, 149, 106, 0.5);
   vertical-align: middle;
   margin: 0 14px;
 }
@@ -70,7 +81,10 @@
   font-weight: 500;
   transition: transform .2s, opacity .2s;
 }
-.btn-pill-dark:hover { opacity: .9; }
+
+.btn-pill-dark:hover {
+  opacity: .9;
+}
 
 .btn-pill-outline {
   border: 1.5px solid var(--ink);
@@ -82,7 +96,10 @@
   background: transparent;
   transition: background .2s;
 }
-.btn-pill-outline:hover { background: rgba(28,28,28,0.05); }
+
+.btn-pill-outline:hover {
+  background: rgba(28, 28, 28, 0.05);
+}
 
 .btn-pill-light {
   background: var(--linen);
@@ -92,10 +109,13 @@
   font-size: 14px;
   font-weight: 500;
 }
-.btn-pill-light:hover { background: #fff; }
+
+.btn-pill-light:hover {
+  background: #fff;
+}
 
 .btn-pill-ghost {
-  border: 1.5px solid rgba(242,237,230,0.4);
+  border: 1.5px solid rgba(242, 237, 230, 0.4);
   color: var(--linen);
   border-radius: 9999px;
   padding: 14px 28px;
@@ -103,4 +123,8 @@
   background: transparent;
   transition: all .2s;
 }
-.btn-pill-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+.btn-pill-ghost:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}

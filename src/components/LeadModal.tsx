@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from "react";
 
 type Ctx = { open: () => void; close: () => void; isOpen: boolean };
-const ModalCtx = createContext<Ctx>({ open: () => {}, close: () => {}, isOpen: false });
+const ModalCtx = createContext<Ctx>({ open: () => { }, close: () => { }, isOpen: false });
 
 export const useLeadModal = () => useContext(ModalCtx);
 
@@ -56,6 +56,7 @@ export function LeadModalProvider({ children }: { children: ReactNode }) {
           <div
             className="relative w-full max-w-[760px] rounded-2xl bg-white shadow-2xl flex flex-col"
             style={{
+              height: "calc(100dvh - 24px)",
               maxHeight: "calc(100dvh - 24px)",
               transform: mounted ? "scale(1)" : "scale(0.96)",
               opacity: mounted ? 1 : 0,
@@ -72,11 +73,11 @@ export function LeadModalProvider({ children }: { children: ReactNode }) {
             >
               ✕
             </button>
-            <div className="p-6 overflow-y-auto rounded-2xl" style={{ WebkitOverflowScrolling: "touch" }}>
+            <div className="flex-1 p-2 sm:p-6 overflow-y-auto rounded-2xl" style={{ WebkitOverflowScrolling: "touch" }}>
               <iframe
                 aria-label="Registration for Level 1 - Introduction to Jyotish - 13th August 2026"
                 frameBorder={0}
-                style={{ height: 500, width: "99%", border: "none" }}
+                style={{ height: "100%", minHeight: "500px", width: "100%", border: "none" }}
                 src={ZOHO_SRC}
               />
             </div>
