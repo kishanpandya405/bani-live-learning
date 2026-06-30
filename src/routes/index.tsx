@@ -89,10 +89,10 @@ function Navbar() {
   return (
     <header className="sticky top-0 z-[100]" style={{ background: "var(--forest)" }}>
       <div className="max-w-[1400px] mx-auto flex items-center justify-between px-6 md:px-12 h-[70px] md:h-16">
-        <div className="flex flex-col items-start justify-center md:flex-row md:items-center gap-2 md:gap-4">
+        <div className="flex flex-col items-start justify-center md:flex-row md:items-center gap-[4px] md:gap-4">
           <span className="font-display italic text-xl md:text-[22px] leading-none" style={{ color: "var(--linen)" }}>Bani_Live</span>
           <span className="hidden md:inline" style={{ color: "rgba(242,237,230,0.3)" }}>|</span>
-          <div className="flex flex-row items-center md:item-start mt-1 md:mt-0 md:flex-row md:items-center gap-1 md:gap-2">
+          <div className="flex flex-row items-center md:item-start mt-1 md:mt-0 md:flex-row md:items-center gap-[7px] md:gap-2">
             <div className="flex -space-x-2">
               {[1, 2, 3].map((i) => (
                 <img key={i} src={`https://i.pravatar.cc/64?img=${i + 10}`} alt="" className="w-5 h-5 md:w-7 md:h-7 rounded-full" style={{ border: "2px solid var(--gold)" }} />
@@ -177,13 +177,13 @@ function Hero() {
           Learn Basic Vedic Astrology to {" "}
           <span className="italic" style={{ color: "var(--gold)" }}>Understand Karma, Free Will &amp; Planerary Influences!</span>
         </h1>
-        <p className="mt-5 md:mt-8 md:text-[16px] max-w-[316px] md:max-w-[640px] mx-auto md:leading-[1.7] font-regular text-[14px] leading-[28px]" style={{ color: "#000000" }}>
+        <p className="mt-5 md:mt-8 md:text-[16px] max-w-[316px] sm:max-w-[640px]  md:max-w-[640px] mx-auto md:leading-[1.7] font-regular text-[14px] leading-[28px]" style={{ color: "#000000" }}>
           A beginner-friendly introduction to Vedic Astrology for deeper self-awareness, spiritual insight, and a strong Jyotish foundation—guided by Bani Singh Chaddha, with 16 years of expertise.
         </p>
 
         {/* Stats grid: desktop 5 cols; mobile 2x2 + full-width 3rd row */}
         <div className="mt-8 md:mt-12 rounded-2xl bg-white shadow-sm border max-w-[1100px] mx-auto overflow-hidden" style={{ borderColor: "var(--stone)" }}>
-          <div className="grid grid-cols-2 md:grid-cols-5">
+          <div className="grid grid-cols-2 lg:grid-cols-5">
             {[
               ["Class Duration", "1 hr (15+ Classes)"],
               ["Timings", "12–1 PM (Tue & Thur)"],
@@ -198,11 +198,11 @@ function Hero() {
                   className={[
                     "px-4 md:px-6 py-7 md:py-8 text-center",
                     // mobile borders
-                    i % 2 === 0 ? "border-r md:border-r" : "",
-                    i < 4 ? "border-b md:border-b-0" : "",
+                    i % 2 === 0 ? "border-r lg:border-r" : "",
+                    i < 4 ? "border-b lg:border-b-0" : "",
                     // mobile: last item spans full width
-                    isLast ? "col-span-2 md:col-span-1 border-r-0 md:border-r-0" : "",
-                    !isLast && i < arr.length - 1 ? "md:border-r" : "",
+                    isLast ? "col-span-2 lg:col-span-1 border-r-0 lg:border-r-0" : "",
+                    !isLast && i < arr.length - 1 ? "lg:border-r" : "",
                   ].join(" ")}
                   style={{ borderColor: "var(--stone)" }}
                 >
@@ -337,8 +337,8 @@ const tags = [
 
 function ForWho() {
   return (
-    <section className="bg-ivory  md:px-12 py-12 md:py-16">
-      <div className="max-w-[900px] mx-auto flex justify-center items-end overflow-x-auto md:overflow-visible">
+    <section className="bg-ivory px-6 md:px-12 py-12 md:py-16 overflow-hidden">
+      <div className="max-w-[900px] mx-auto flex justify-start md:justify-center items-end overflow-x-auto md:overflow-visible w-full px-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
         {imgs.map((src, i) => {
           const rot = i === 0 ? -8 : i === 1 ? -4 : i === 3 ? 4 : i === 4 ? 8 : 0;
           const scale = i === 2 ? 1.1 : 1;
@@ -610,7 +610,7 @@ function PricingCard() {
     <section className="bg-ivory px-6 md:px-12 py-12 md:py-16">
       <div
         style={{ background: "#1F2D1B" }}
-        className="max-w-[940px] mx-auto rounded-[20px] overflow-hidden grid md:grid-cols-[60%_40%]"
+        className="max-w-[940px] mx-auto rounded-[20px] overflow-hidden grid grid-cols-1 lg:grid-cols-[60%_40%]"
       >
         <div className="p-8 md:p-12">
           <span
@@ -626,7 +626,7 @@ function PricingCard() {
           <p className="font-sans text-[13px] text-linen/40 mt-2">
             One-time payment · Lifetime access to recordings · Live cohort
           </p>
-          <div className="mt-8 pt-7 border-t border-white/[0.08] grid md:grid-cols-3 gap-6">
+          <div className="mt-8 pt-7 border-t border-white/[0.08] grid grid-cols-1 sm:grid-cols-3 gap-6">
             {pricingItems.map((it) => (
               <div key={it.t} className="flex flex-col gap-[6px]">
                 <span className="font-sans text-[20px] text-gold">{it.i}</span>
@@ -890,7 +890,7 @@ function Footer() {
 
 function WhatsAppFAB() {
   return (
-    <a href={WA_GENERAL} target="_blank" rel="noreferrer" aria-label="WhatsApp" className="fixed bottom-32 md:bottom-8 right-6 z-[200] w-14 h-14 rounded-full flex items-center justify-center transition-transform hover:scale-110" style={{ background: "#25D366", boxShadow: "0 4px 20px rgba(37,211,102,0.4)" }}>
+    <a href={WA_GENERAL} target="_blank" rel="noreferrer" aria-label="WhatsApp" className="fixed bottom-32 md:bottom-32 xl:bottom-8 right-6 z-[200] w-14 h-14 rounded-full flex items-center justify-center transition-transform hover:scale-110" style={{ background: "#25D366", boxShadow: "0 4px 20px rgba(37,211,102,0.4)" }}>
       <svg viewBox="0 0 24 24" width="28" height="28" fill="#fff"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-.607zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.547-.085 1.758-.719 2.006-1.413.247-.694.247-1.289.173-1.413z" /></svg>
     </a>
   );
