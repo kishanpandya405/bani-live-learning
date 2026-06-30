@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
+import { createPortal } from "react-dom";
 import useEmblaCarousel from "embla-carousel-react";
 import {
   User,
@@ -17,21 +18,29 @@ import {
 } from "lucide-react";
 import { LeadModalProvider, useLeadModal } from "@/components/LeadModal";
 import { Countdown } from "@/components/Countdown";
-import birthChartImg from "@/assets/birth-chart.jpg";
+import birthChartImg from "@/assets/birth-chart-img.png";
 import baniAsset from "@/assets/bani-img.png";
 import heroBgAsset from "@/assets/hero-bg.png.asset.json";
 import testimonial1 from "@/assets/testimonial-1.mp4.asset.json";
 import testimonial2 from "@/assets/testimonial-2.mp4.asset.json";
 import testimonial3 from "@/assets/testimonial-3.mp4.asset.json";
-import zoomIconAsset from "@/assets/zoom-icon.png.asset.json";
-import whatsappIconAsset from "@/assets/whatsapp-icon.png.asset.json";
+import zoomIconAsset from "@/assets/zoom.svg";
+import whatsappIconAsset from "@/assets/whatsapp.svg";
 import img1 from "../assets/forwho-1.png.asset.json";
 import img2 from "../assets/forwho-2.png.asset.json";
 import img3 from "../assets/forwho-3.png.asset.json";
 import img4 from "../assets/forwho-4.png.asset.json";
 import img5 from "../assets/forwho-5.png.asset.json";
-import poster from "../assets/pricing-poster.png.asset.json";
+import poster from "../assets/bani-section.png";
 import Star from "../assets/star.svg"
+import giftIcon from "../assets/gift.svg";
+import madelIcon from "../assets/madel.svg";
+import messageIcon from "../assets/message.svg";
+import heroImg from "@/assets/hero-img.png";
+import heromobile from "../assets/bani-mobile.png"
+import heroOm from "@/assets/hero-om.png";
+import handImg from "../assets/hand.png";
+import chakraImg from "../assets/chakra.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -167,14 +176,36 @@ function TrialBar() {
 /* ===== POINT 2: Hero ===== */
 function Hero() {
   return (
-    <section className="relative overflow-hidden" style={{ backgroundColor: "var(--ivory)", backgroundImage: `url(${heroBgAsset.url})`, backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}>
-      <div className="relative max-w-[1362px] mx-auto px-6 md:px-12 py-16 md:py-24 text-center flex flex-col gap-4">
+    <section
+      className="relative overflow-hidden"
+      style={{ backgroundColor: "#FFF7EF" }}
+    >
+      {/* Om symbol watermark on the bottom-left */}
+      <img
+        src={heroOm}
+        alt=""
+        className="hidden md:block absolute left-[-2%] bottom-[-5%] w-[45%] max-w-[360px] opacity-15 pointer-events-none select-none z-[2]"
+      />
+      {/* Bani's portrait on the right side — desktop only */}
+      <img
+        src={heroImg}
+        alt="Bani Singh Chadha"
+        className="hidden md:block absolute right-0 bottom-0 h-full w-auto object-contain object-bottom pointer-events-none select-none z-0"
+      />
+      {/* Gradient overlay to smoothly blend the left edge of heroImg */}
+      <div
+        className="absolute inset-0 pointer-events-none z-[1]"
+        style={{
+          background: "linear-gradient(90deg, #FFF7EF 65.65%, rgba(252, 238, 223, 0.870813) 78.98%, rgba(252, 238, 223, 0) 92.11%)"
+        }}
+      />
+      <div className="relative z-10 max-w-[1362px] mx-auto px-6 md:px-12 py-16 md:py-24 text-center flex flex-col gap-4">
         <Eyebrow withLines>
           <span className="block sm:inline">Vedic Astrology</span>{" "}
           <span className="block sm:inline">Beginner Course</span>
         </Eyebrow>
-        <h1 className=" font-display mt-6 md:mt-10 text-[40px] md:text-[64px] leading-[48px] md:leading-[82px]" style={{ color: "var(--ink)" }}>
-          Learn Basic Vedic Astrology to {" "}
+        <h1 className=" font-display mt-6 md:mt-10 text-[40px] md:text-[64px] lg:text-[64px] leading-[48px] md:leading-[82px]" style={{ color: "var(--ink)" }}>
+          Learn Basic Vedic Astrology to  {" "}
           <span className="italic" style={{ color: "var(--gold)" }}>Understand Karma, Free Will &amp; Planerary Influences!</span>
         </h1>
         <p className="mt-5 md:mt-8 md:text-[16px] max-w-[316px] sm:max-w-[640px]  md:max-w-[640px] mx-auto md:leading-[1.7] font-regular text-[14px] leading-[28px]" style={{ color: "#000000" }}>
@@ -224,9 +255,19 @@ function Hero() {
         </div>
 
         <div className="mt-6 md:mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs " style={{ color: "var(--brown)" }}>
-          <span className="inline-flex items-center gap-2"><img src={zoomIconAsset.url} alt="Zoom" className="h-4 w-4" />LIVE ON ZOOM</span>
+          <span className="inline-flex items-center gap-2"><img src={zoomIconAsset} alt="Zoom" className="h-4 w-4" />LIVE ON ZOOM</span>
           <span style={{ color: "var(--stone)" }}>·</span>
-          <span className="inline-flex items-center gap-2"><img src={whatsappIconAsset.url} alt="WhatsApp" className="h-4 w-4" />WHATSAPP COMMUNITY INCLUDED</span>
+          <span className="inline-flex items-center gap-2"><img src={whatsappIconAsset} alt="WhatsApp" className="h-4 w-4" />WHATSAPP COMMUNITY INCLUDED</span>
+        </div>
+
+        {/* Mobile-only inline portrait at the bottom */}
+        <div className="block md:hidden mt-8 -mx-6 -mb-16 overflow-hidden">
+          <img
+            src={heromobile}
+            alt="Bani Singh Chadha"
+            className="w-full h-auto object-cover"
+            style={{ maxHeight: "660px", objectPosition: "center 20%" }}
+          />
         </div>
       </div>
     </section>
@@ -282,10 +323,16 @@ function Outcome1() {
   ];
   return (
     <section
-      className="py-20 md:py-24 px-6 md:px-12"
-      style={{ background: "#F5EFE6", borderTop: "1px solid #D4B896", borderBottom: "1px solid #D4B896" }}
+      className="relative py-20 md:py-24 px-6 md:px-12 overflow-hidden"
+      style={{ background: "#F6F1E7", borderTop: "1px solid #D4B896", borderBottom: "1px solid #D4B896" }}
     >
-      <div className="max-w-[1366px] mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+      {/* Hand watermark in top-right corner (desktop only) */}
+      <img
+        src={handImg}
+        alt=""
+        className="hidden md:block absolute right-25 top-0 translate-x-[25%] -translate-y-[25%] w-[35%] max-w-[400px] opacity-70 pointer-events-none select-none z-0"
+      />
+      <div className="relative z-10 max-w-[1366px] mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center">
         {/* Image — pending asset */}
         <div
           className="rounded-2xl w-full aspect-[4/3] overflow-hidden flex items-center justify-center"
@@ -599,22 +646,45 @@ function MeetTeacher() {
 
 /* ===== POINT 10: Pricing / Benefits card ===== */
 const pricingItems = [
-  { i: "🎁", t: "Free Birth Chart PDF", b: "Receive our Birth Chart Reading Introduction PDF instantly in your inbox." },
-  { i: "🏆", t: "Certificate", b: "Digital certificate from Bani on completion of the course." },
-  { i: "💬", t: "WhatsApp Community", b: "Get your doubts answered by Bani in a dedicated group." },
+  { i: giftIcon, t: "Free Birth Chart PDF", b: "Receive our Birth Chart Reading Introduction PDF instantly in your inbox." },
+  { i: madelIcon, t: "Certificate", b: "Digital certificate from Bani on completion of the course." },
+  { i: messageIcon, t: "WhatsApp Community", b: "Get your doubts answered by Bani in a dedicated group." },
 ];
 
 function PricingCard() {
   const { open } = useLeadModal();
   return (
-    <section className="bg-ivory px-6 md:px-12 py-12 md:py-16">
+    <section className="relative overflow-hidden bg-ivory px-6 md:px-12 py-12 md:py-16">
+      {/* Chakra watermark in bottom-right corner (desktop only) */}
+      <img
+        src={chakraImg}
+        alt=""
+        className="hidden md:block absolute right-20 bottom-0 translate-x-[25%] translate-y-[25%] w-[35%] max-w-[400px] opacity-70 pointer-events-none select-none z-0"
+      />
+      <div className="relative z-10 text-center mt-12 max-w-[1200px] mx-auto">
+        <div className="flex justify-center items-center gap-3">
+          <span className="inline-block w-10 h-px bg-gold" />
+          <span className="font-sans text-[12px] uppercase tracking-[0.22em] text-gold">BENEFITS FOR ALL</span>
+          <span className="inline-block w-10 h-px bg-gold" />
+        </div>
+        <h2 className="font-display text-[40px] md:text-[72px] leading-[1.1] text-ink mt-6">
+          This course builds a foundation <span className="italic text-gold">that sharpens every practice.</span>
+        </h2>
+        <div className="flex flex-wrap gap-x-4 gap-y-3 justify-center mt-10 max-w-[900px] mx-auto">
+          {tags.map((t) => (
+            <span key={t} className="border border-stone rounded-full px-6 py-[10px] font-sans text-[14px] text-brown bg-linen/40">
+              {t}
+            </span>
+          ))}
+        </div>
+      </div>
       <div
         style={{ background: "#1F2D1B" }}
-        className="max-w-[940px] mx-auto rounded-[20px] overflow-hidden grid grid-cols-1 lg:grid-cols-[60%_40%]"
+        className="relative z-10 max-w-[940px] mx-auto rounded-[20px] overflow-hidden grid grid-cols-1 lg:grid-cols-[60%_40%] mt-20"
       >
         <div className="p-8 md:p-12">
           <span
-            style={{ background: "#6B7C2E" }}
+            style={{ background: "#ADAD16" }}
             className="inline-block rounded-full px-[14px] py-[5px] font-sans text-[11px] uppercase tracking-[0.13em] text-linen"
           >
             • TRIAL CLASS REGISTRATIONS CLOSE ON 15 JULY 2026
@@ -629,7 +699,9 @@ function PricingCard() {
           <div className="mt-8 pt-7 border-t border-white/[0.08] grid grid-cols-1 sm:grid-cols-3 gap-6">
             {pricingItems.map((it) => (
               <div key={it.t} className="flex flex-col gap-[6px]">
-                <span className="font-sans text-[20px] text-gold">{it.i}</span>
+                <span className="font-sans text-[20px] text-gold">
+                  <img src={it.i} alt="" className="w-6 h-6" />
+                </span>
                 <span className="font-sans text-[14px] font-medium text-linen">{it.t}</span>
                 <span className="font-sans text-[12px] text-linen/45 leading-[1.55]">{it.b}</span>
               </div>
@@ -644,9 +716,9 @@ function PricingCard() {
             </button>
           </div>
         </div>
-        <div className="relative p-3 md:p-4">
+        <div className="relative p-3 md:p-4 items-center justify-item-center w-[371px] h-[483px] m-auto ">
           <img
-            src={poster.url}
+            src={poster}
             alt="Vedic Astrology with Bani — New Batch Begins 13 August 2026"
             className="w-full h-full object-cover"
             style={{ borderRadius: "16px", border: "1px solid #E2DDD5" }}
@@ -676,14 +748,59 @@ const TESTIMONIALS: Testimonial[] = [
   { name: "Kavitha N.", role: "Student · Ahmedabad", img: 7, quote: "Practical, spiritual, and deeply personal. Bani's teaching style makes complex ideas feel like conversation." },
 ];
 
-function TestimonialCard({ t }: { t: Testimonial }) {
+/* Video lightbox — renders above everything via a portal */
+function VideoLightbox({ src, onClose }: { src: string; onClose: () => void }) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [playing, setPlaying] = useState(false);
-  const play = () => {
-    if (!t.video) return;
-    setPlaying(true);
-    setTimeout(() => videoRef.current?.play(), 30);
-  };
+
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
+    document.addEventListener("keydown", handleKey);
+    document.body.style.overflow = "hidden";
+    setTimeout(() => videoRef.current?.play(), 80);
+    return () => {
+      document.removeEventListener("keydown", handleKey);
+      document.body.style.overflow = "";
+    };
+  }, [onClose]);
+
+  return createPortal(
+    <div
+      className="fixed inset-0 z-[9999] flex items-center justify-center"
+      style={{ background: "rgba(0,0,0,0.95)" }}
+      onClick={onClose}
+    >
+      {/* Close button — top-right of screen */}
+      <button
+        onClick={onClose}
+        aria-label="Close video"
+        className="absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center text-white text-2xl font-light z-10"
+        style={{ background: "rgba(255,255,255,0.15)", backdropFilter: "blur(8px)" }}
+      >
+        ×
+      </button>
+
+      {/* Portrait video card — Instagram Story style */}
+      <div
+        className="relative h-[92vh] w-auto"
+        style={{ aspectRatio: "9/16", maxWidth: "calc(92vh * 9 / 16)" }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <video
+          ref={videoRef}
+          src={src}
+          controls
+          playsInline
+          autoPlay
+          className="w-full h-full object-cover"
+          style={{ borderRadius: "16px", background: "#000" }}
+        />
+      </div>
+    </div>,
+    document.body
+  );
+}
+
+function TestimonialCard({ t, onPlay }: { t: Testimonial; onPlay: (url: string) => void }) {
   return (
     <div
       className="w-[280px] sm:w-[320px] aspect-[3/4] rounded-2xl relative overflow-hidden shrink-0"
@@ -695,65 +812,51 @@ function TestimonialCard({ t }: { t: Testimonial }) {
         alt={t.name}
         loading="lazy"
         className="absolute inset-0 w-full h-full object-cover"
-        style={{ display: playing ? "none" : "block" }}
       />
-      {t.video && playing && (
-        <video
-          ref={videoRef}
-          src={t.video}
-          controls
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover bg-black"
-        />
-      )}
       {/* Dark gradient overlay */}
-      {!playing && (
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0) 30%, rgba(0,0,0,0.75) 100%)" }}
-        />
-      )}
-      {!playing && (
-        <div className="absolute inset-0 p-5 flex flex-col justify-end">
-          {t.quote && (
-            <p className="font-display italic text-[14px] leading-[1.5] mb-4" style={{ color: "#fff" }}>
-              "{t.quote}"
-            </p>
-          )}
-          <div className="flex items-center gap-3">
-            <img
-              src={`https://i.pravatar.cc/96?img=${t.img}`}
-              alt=""
-              className="w-10 h-10 rounded-full"
-              style={{ border: "2px solid rgba(255,255,255,0.4)" }}
-            />
-            <div className="flex-1">
-              <div className="text-[12px] uppercase font-semibold" style={{ color: "#fff", letterSpacing: "0.1em" }}>{t.name}</div>
-              <div className="text-[11px]" style={{ color: "rgba(255,255,255,0.7)" }}>{t.role}</div>
-            </div>
-            {t.video && (
-              <button
-                onClick={play}
-                aria-label="Watch story"
-                className="flex items-center gap-2 text-[11px] uppercase"
-                style={{ color: "#fff", letterSpacing: "0.1em" }}
-              >
-                <span
-                  className="rounded-full flex items-center justify-center"
-                  style={{ width: 32, height: 32, background: "rgba(0,0,0,0.7)" }}
-                >
-                  <Play size={14} color="#fff" fill="#fff" />
-                </span>
-              </button>
-            )}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0) 30%, rgba(0,0,0,0.75) 100%)" }}
+      />
+      <div className="absolute inset-0 p-5 flex flex-col justify-end">
+        {t.quote && (
+          <p className="font-display italic text-[14px] leading-[1.5] mb-4" style={{ color: "#fff" }}>
+            "{t.quote}"
+          </p>
+        )}
+        <div className="flex items-center gap-3">
+          <img
+            src={`https://i.pravatar.cc/96?img=${t.img}`}
+            alt=""
+            className="w-10 h-10 rounded-full"
+            style={{ border: "2px solid rgba(255,255,255,0.4)" }}
+          />
+          <div className="flex-1">
+            <div className="text-[12px] uppercase font-semibold" style={{ color: "#fff", letterSpacing: "0.1em" }}>{t.name}</div>
+            <div className="text-[11px]" style={{ color: "rgba(255,255,255,0.7)" }}>{t.role}</div>
           </div>
           {t.video && (
-            <div className="text-[10px] uppercase mt-2" style={{ color: "rgba(255,255,255,0.7)", letterSpacing: "0.14em" }}>
-              ▶ Watch Story
-            </div>
+            <button
+              onClick={() => onPlay(t.video!)}
+              aria-label="Watch story"
+              className="flex items-center gap-2 text-[11px] uppercase"
+              style={{ color: "#fff", letterSpacing: "0.1em" }}
+            >
+              <span
+                className="rounded-full flex items-center justify-center"
+                style={{ width: 32, height: 32, background: "rgba(0,0,0,0.7)" }}
+              >
+                <Play size={14} color="#fff" fill="#fff" />
+              </span>
+            </button>
           )}
         </div>
-      )}
+        {t.video && (
+          <div className="text-[10px] uppercase mt-2" style={{ color: "rgba(255,255,255,0.7)", letterSpacing: "0.14em" }}>
+            ▶ Watch Story
+          </div>
+        )}
+      </div>
     </div>
   );
 }
@@ -761,8 +864,13 @@ function TestimonialCard({ t }: { t: Testimonial }) {
 function Testimonials() {
   const { open } = useLeadModal();
   const [emblaRef, emblaApi] = useEmblaCarousel({ dragFree: true, loop: false, align: "start" });
+  const [activeVideo, setActiveVideo] = useState<string | null>(null);
+  const handlePlay = useCallback((url: string) => setActiveVideo(url), []);
+  const handleClose = useCallback(() => setActiveVideo(null), []);
+
   return (
     <section className="py-20 md:py-24" style={{ background: "var(--ink)" }}>
+      {activeVideo && <VideoLightbox src={activeVideo} onClose={handleClose} />}
       <div className="max-w-[1366px] mx-auto px-6 md:px-12 text-center">
         <Eyebrow withLines color="#B89A5A">Happy Students</Eyebrow>
         <h2 className="font-display mt-6 text-[38px] md:text-[56px] leading-[1.05]" style={{ color: "var(--linen)" }}>
@@ -772,7 +880,7 @@ function Testimonials() {
       <div className="mt-12 overflow-hidden" ref={emblaRef}>
         <div className="flex gap-5 pl-6 md:pl-12">
           {TESTIMONIALS.map((t, i) => (
-            <TestimonialCard key={i} t={t} />
+            <TestimonialCard key={i} t={t} onPlay={handlePlay} />
           ))}
         </div>
       </div>
@@ -834,11 +942,14 @@ function FAQ() {
 /* ===== POINT 14: Final CTA ===== */
 function FinalCTA() {
   return (
-    <section className="px-6 md:px-12" style={{ background: "var(--ivory)", paddingTop: 60, paddingBottom: 60 }}>
-      <div className="md:pt-[20px]" />
+    <section className="relative px-6 md:px-12" style={{ background: "#EAE0CB", paddingTop: 60, paddingBottom: 60, borderTop: "1.5px solid #C8B99A" }}>
+      {/* Badge centered on the top border */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
+        <span className="inline-block rounded-full px-5 py-2 text-xs uppercase whitespace-nowrap" style={{ background: "#588F0A", color: "var(--linen)", letterSpacing: "0.12em" }}>Registration Ends on July 15, 2026</span>
+      </div>
+
       <div className="text-center">
-        <span className="inline-block rounded-full px-5 py-2 text-xs uppercase" style={{ background: "var(--forest)", color: "var(--linen)", letterSpacing: "0.12em" }}>Registration Ends on July 15, 2026</span>
-        <div className="mt-6">
+        <div className="mt-2">
           <Eyebrow withLines color="#B89A5A">Join the Course Now</Eyebrow>
         </div>
         <h2 className="font-display mt-10 text-[34px] md:text-[52px] leading-[1.1] max-w-[900px] mx-auto" style={{ color: "var(--ink)" }}>
@@ -855,7 +966,7 @@ function FinalCTA() {
         ].map(([t, s]) => (
           <div
             key={t}
-            className="rounded-xl flex gap-4 items-start"
+            className="rounded-xl flex gap-4 items-center"
             style={{ background: "#fff", border: "1px solid #E8DDD0", padding: "24px 20px" }}
           >
             <div
