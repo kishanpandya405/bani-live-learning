@@ -44,7 +44,7 @@ export function LeadModalProvider({ children }: { children: ReactNode }) {
           role="dialog"
           aria-modal="true"
           aria-label="Course Registration"
-          className="fixed inset-0 z-[300] flex items-center justify-center p-3 sm:p-6"
+          className="fixed inset-0 z-[300] flex items-center justify-center p-0 sm:p-6"
           style={{
             background: "rgba(28,28,28,0.7)",
             backdropFilter: "blur(4px)",
@@ -73,7 +73,7 @@ export function LeadModalProvider({ children }: { children: ReactNode }) {
             >
               ✕
             </button>
-            <div className="flex-1 p-2 sm:p-6 overflow-y-auto rounded-2xl" style={{ WebkitOverflowScrolling: "touch" }}>
+            <div className="flex-1 p-0 overflow-hidden rounded-2xl" style={{ WebkitOverflowScrolling: "touch" }}>
               <iframe
                 aria-label="Registration for Level 1 - Introduction to Jyotish - 13th August 2026"
                 frameBorder={0}

@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState, useCallback } from "react";
 import { createPortal } from "react-dom";
 import useEmblaCarousel from "embla-carousel-react";
@@ -26,11 +26,11 @@ import testimonial2 from "@/assets/testimonial-2.mp4.asset.json";
 import testimonial3 from "@/assets/testimonial-3.mp4.asset.json";
 import zoomIconAsset from "@/assets/zoom.svg";
 import whatsappIconAsset from "@/assets/whatsapp.svg";
-import img1 from "../assets/forwho-1.png.asset.json";
-import img2 from "../assets/forwho-2.png.asset.json";
-import img3 from "../assets/forwho-3.png.asset.json";
-import img4 from "../assets/forwho-4.png.asset.json";
-import img5 from "../assets/forwho-5.png.asset.json";
+import img1 from "../assets/card-2.png";
+import img2 from "../assets/card-3.png";
+import img3 from "../assets/card-4.png";
+import img4 from "../assets/card-5.png";
+import img5 from "../assets/card-6.png";
 import poster from "../assets/bani-section.png";
 import Star from "../assets/star.svg"
 import giftIcon from "../assets/gift.svg";
@@ -41,6 +41,7 @@ import heromobile from "../assets/bani-mobile.png"
 import heroOm from "@/assets/hero-om.png";
 import handImg from "../assets/hand.png";
 import chakraImg from "../assets/chakra.png";
+import star1 from "../assets/star-1.svg"
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -59,9 +60,8 @@ export const Route = createFileRoute("/")({
 const WA_GENERAL = "https://wa.me/919289241133";
 
 function CTAJoin({ label = "Join Class Now", variant = "dark" as "dark" | "light", className = "" }) {
-  const { open } = useLeadModal();
   return (
-    <button onClick={open} className={`${variant === "dark" ? "btn-pill-dark" : "btn-pill-light"} ${className}`}>{label}</button>
+    <Link to="/payment" className={`${variant === "dark" ? "btn-pill-dark" : "btn-pill-light"} ${className} inline-flex items-center justify-center text-center`}>{label}</Link>
   );
 }
 function CTACallback({ variant = "dark" as "dark" | "ghost", className = "" }) {
@@ -71,7 +71,19 @@ function CTACallback({ variant = "dark" as "dark" | "ghost", className = "" }) {
   );
 }
 
-function Eyebrow({ children, light = false, withLines = false, color }: { children: React.ReactNode; light?: boolean; withLines?: boolean; color?: string }) {
+function Eyebrow({
+  children,
+  light = false,
+  withLines = false,
+  leftLine = false,
+  color
+}: {
+  children: React.ReactNode;
+  light?: boolean;
+  withLines?: boolean;
+  leftLine?: boolean;
+  color?: string
+}) {
   const style: React.CSSProperties = {};
   if (color) style.color = color;
   else if (light) style.color = "rgba(184,149,106,0.9)";
@@ -82,6 +94,15 @@ function Eyebrow({ children, light = false, withLines = false, color }: { childr
         <div className="w-10 h-[1px]" style={{ background: "rgba(184,149,106,0.5)" }} />
         <div className="text-center leading-[1.4]">{children}</div>
         <div className="w-10 h-[1px]" style={{ background: "rgba(184,149,106,0.5)" }} />
+      </div>
+    );
+  }
+
+  if (leftLine) {
+    return (
+      <div className="eyebrow flex flex-row items-center gap-3" style={style}>
+        <div className="w-10 h-[1px]" style={{ background: color || "rgba(184,149,106,0.5)" }} />
+        <div className="leading-[1.4]">{children}</div>
       </div>
     );
   }
@@ -111,8 +132,8 @@ function Navbar() {
           </div>
         </div>
         <div className="flex items-center gap-2 md:gap-3">
-          <button onClick={open} className="hidden md:inline-block rounded-full text-[13px] px-4 py-2" style={{ border: "1.5px solid rgba(242,237,230,0.5)", color: "var(--linen)" }}>Request a Callback</button>
-          <button onClick={open} className="rounded-full text-[12px] md:text-[13px] px-4 py-2 font-medium" style={{ background: "var(--ink)", color: "var(--linen)" }}>Join Class Now</button>
+          <button onClick={open} className="hidden md:inline-block rounded-full text-[13px] px-4 py-2 cursor-pointer " style={{ border: "1.5px solid rgba(242,237,230,0.5)", color: "var(--linen)" }}>Request a Callback</button>
+          <Link to="/payment" className="rounded-full text-[12px] md:text-[13px] px-4 py-2 font-medium cursor-pointer inline-flex items-center justify-center text-center" style={{ background: "var(--ink)", color: "var(--linen)" }}>Join Class Now</Link>
         </div>
       </div>
     </header>
@@ -131,15 +152,15 @@ function TrialBar() {
       >
         {/* Green badge */}
         <span
-          className="absolute -top-3 left-4 md:left-10 inline-block rounded-full px-3 py-1 text-[10px] uppercase font-medium shadow whitespace-nowrap"
-          style={{ background: "var(--forest)", color: "#fff", letterSpacing: "0.14em" }}
+          className="absolute -top-3 left-4 md:left-10 inline-block  px-3 py-1 text-[13px] font-bold leading-[19px] tracking-[2px] uppercase font-medium shadow whitespace-nowrap"
+          style={{ background: "#095111", color: "#FFD57C", letterSpacing: "0.14em" }}
         >
           ✦ FREE | ✦ NO PAYMENT REQUIRED.
         </span>
 
         {/* Desktop layout */}
         <div className="hidden md:grid items-center px-8 lg:px-12 py-5" style={{ gridTemplateColumns: "1fr auto auto", gap: 24 }}>
-          <span className="font-display italic text-xl lg:text-2xl" style={{ color: "#E8C77A" }}>
+          <span className="font-display  text-xl lg:text-[32px] font-semibold leading-[100%]" style={{ color: "#FDED93" }}>
             Trial Class Registrations Ending Soon!
           </span>
           <Countdown />
@@ -154,7 +175,7 @@ function TrialBar() {
 
         {/* Mobile layout */}
         <div className="md:hidden flex flex-col gap-3 px-5 py-4 pt-5">
-          <span className="font-display italic text-base" style={{ color: "#E8C77A" }}>
+          <span className="font-display  text-[20px]" style={{ color: "#E8C77A" }}>
             Trial Class Registrations Ending Soon!
           </span>
           <div className="flex items-center justify-between gap-4">
@@ -208,7 +229,7 @@ function Hero() {
           Learn Basic Vedic Astrology to  {" "}
           <span className="italic" style={{ color: "var(--gold)" }}>Understand Karma, Free Will &amp; Planerary Influences!</span>
         </h1>
-        <p className="mt-5 md:mt-8 md:text-[16px] max-w-[316px] sm:max-w-[640px]  md:max-w-[640px] mx-auto md:leading-[1.7] font-regular text-[14px] leading-[28px]" style={{ color: "#000000" }}>
+        <p className="mt-5 md:mt-8 md:text-[16px] max-w-[316px] sm:max-w-[640px]  md:max-w-[768px] mx-auto md:leading-[1.7] font-regular text-[14px] leading-[28px]" style={{ color: "#00000099" }}>
           A beginner-friendly introduction to Vedic Astrology for deeper self-awareness, spiritual insight, and a strong Jyotish foundation—guided by Bani Singh Chaddha, with 16 years of expertise.
         </p>
 
@@ -255,9 +276,9 @@ function Hero() {
         </div>
 
         <div className="mt-6 md:mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs " style={{ color: "var(--brown)" }}>
-          <span className="inline-flex items-center gap-2"><img src={zoomIconAsset} alt="Zoom" className="h-4 w-4" />LIVE ON ZOOM</span>
+          <span className="inline-flex items-center gap-2 leading-[16px] tracking-[3px]"><img src={zoomIconAsset} alt="Zoom" className="h-4 w-4" />LIVE ON ZOOM</span>
           <span style={{ color: "var(--stone)" }}>·</span>
-          <span className="inline-flex items-center gap-2"><img src={whatsappIconAsset} alt="WhatsApp" className="h-4 w-4" />WHATSAPP COMMUNITY INCLUDED</span>
+          <span className="inline-flex items-center gap-2 leading-[16px] tracking-[3px]"><img src={whatsappIconAsset} alt="WhatsApp" className="h-4 w-4" />WHATSAPP COMMUNITY INCLUDED</span>
         </div>
 
         {/* Mobile-only inline portrait at the bottom */}
@@ -335,18 +356,18 @@ function Outcome1() {
       <div className="relative z-10 max-w-[1366px] mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center">
         {/* Image — pending asset */}
         <div
-          className="rounded-2xl w-full aspect-[4/3] overflow-hidden flex items-center justify-center"
+          className="rounded-2xl w-full h-[395px] md:h-[468px] aspect-[4/3] overflow-hidden flex items-center justify-center"
           style={{ background: "#E8D9C2", boxShadow: "0 20px 60px rgba(28,28,28,0.10)" }}
         >
           <img src={birthChartImg} alt="Vedic birth chart" loading="lazy" className="w-full h-full object-cover" />
         </div>
         <div>
-          <Eyebrow>—— Outcome #1</Eyebrow>
-          <h2 className="font-display mt-4 text-[36px] md:text-[48px] leading-tight" style={{ color: "var(--ink)" }}>
-            Learn <span className="italic" style={{ color: "var(--gold)" }}>Birth Chart Basics</span> :<br />
+          <Eyebrow leftLine>Outcome #1</Eyebrow>
+          <h2 className="font-display mt-4 text-[40px] md:text-[48px] leading-[48px] font-medium" style={{ color: "var(--ink)" }}>
+            Learn <span className="italic" style={{ color: "var(--gold)" }}>Birth Chart Basics</span> <br className="hidden md:block" />
             The real reason why patterns keep repeating in life!
           </h2>
-          <p className="mt-6 text-[15px] leading-[1.7]" style={{ color: "var(--brown)" }}>
+          <p className="mt-6 text-[15px] leading-[1.7]" style={{ color: "#00000099" }}>
             Your chart is a map. Bani teaches you to read it — through 15+ years of practice, rooted in classical Jyotish.
           </p>
           <div className="mt-8 flex flex-col md:flex-row md:flex-wrap gap-5 md:gap-x-8 md:gap-y-4">
@@ -354,9 +375,9 @@ function Outcome1() {
               <div key={t} className="flex items-center gap-3">
                 <span
                   className="inline-flex items-center justify-center rounded-full shrink-0"
-                  style={{ width: 40, height: 40, border: "1.5px solid #B89A5A" }}
+                  style={{ width: 30, height: 30, border: "1.5px solid #B89A5A" }}
                 >
-                  <Icon size={20} color="#B89A5A" strokeWidth={1.5} />
+                  <Icon size={15} color="#B89A5A" strokeWidth={1.5} />
                 </span>
                 <div>
                   <div className="font-display italic text-base" style={{ color: "var(--brown)" }}>{t}</div>
@@ -372,7 +393,7 @@ function Outcome1() {
 }
 
 /* ===== ForWho Section ===== */
-const imgs = [img1.url, img2.url, img3.url, img4.url, img5.url];
+const imgs = [img1, img2, img3, img4, img5];
 const tags = [
   "Complete Beginners",
   "Spiritual Seekers",
@@ -385,7 +406,7 @@ const tags = [
 function ForWho() {
   return (
     <section className="bg-ivory px-6 md:px-12 py-12 md:py-16 overflow-hidden">
-      <div className="max-w-[900px] mx-auto flex justify-start md:justify-center items-end overflow-x-auto md:overflow-visible w-full px-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+      <div className="max-w-[900px] mx-auto flex justify-center items-end overflow-hidden w-full px-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
         {imgs.map((src, i) => {
           const rot = i === 0 ? -8 : i === 1 ? -4 : i === 3 ? 4 : i === 4 ? 8 : 0;
           const scale = i === 2 ? 1.1 : 1;
@@ -395,7 +416,8 @@ function ForWho() {
               key={i}
               src={src}
               alt=""
-              className="w-[173px] md:w-[173px] aspect-[3/4] rounded-xl object-cover ml-4 md:ml-5 shrink-0"
+              className={`${(i === 0 || i === 4) ? "hidden md:block" : ""
+                } w-[173px] md:w-[204px] aspect-[3/4] rounded-xl object-cover ml-4 md:ml-5 shrink-0`}
               style={{
                 transform: `rotate(${rot}deg) scale(${scale})`,
                 zIndex: z,
@@ -451,7 +473,7 @@ function Outcome2() {
           <h2 className="font-display mt-6 text-[34px] md:text-[52px] leading-[1.1]" style={{ color: "var(--ink)" }}>
             Understand the <span className="italic" style={{ color: "var(--gold)" }}>Action - Reaction Impact</span> of how your karma moves across lifecycles
           </h2>
-          <p className="mt-6 max-w-[680px] mx-auto text-base leading-[1.7]" style={{ color: "var(--brown)" }}>
+          <p className="mt-6 max-w-[680px] md:max-w-[970px] mx-auto text-[18px] leading-[29px]" style={{ color: "#5E5E5A" }}>
             Every significant turning point in your life — the losses, the breakthroughs, the relationships that changed you — is connected to your chart and also correlates events to planetary periods, and uncertainty
           </p>
         </div>
@@ -485,33 +507,33 @@ type TopicItem = { title: string; desc: string; chips: string[] };
 const TOPICS: TopicItem[] = [
   {
     title: "01. Karma, Fate & Free Will",
-    desc: "What Jyotish says about destiny, free will, and what can truly be changed.",
-    chips: ["Understanding Karma", "Fate vs Free Will", "Karmic Bondages", "Life Patterns"],
+    desc: "Understand why life unfolds the way it does and where your free will truly begins.",
+    chips: ["Law & Types of Karma", "Fate vs Free Will", "Karmic Patterns", "The Role of Jyotish in Understanding Destiny"],
   },
   {
-    title: "02. How Planets Influence Your Life",
-    desc: "Understand the logic behind planetary influences—not superstition, but the principles Jyotish is built on.",
-    chips: ["The Nine Planets", "Planetary Logic", "Influences Decoded"],
+    title: "02. The Nine Grahas (Planets)",
+    desc: "Learn how each planet shapes your personality, relationships, career, emotions, and life experiences.",
+    chips: ["Sun, Moon & Mercury", "Mars, Jupiter & Venus", "Saturn's Lessons", "Rahu & Ketu (The Lunar Nodes)"],
   },
   {
     title: "03. Reading a Birth Chart",
-    desc: "Learn to decode a horoscope step by step, beginning with your own chart.",
-    chips: ["Chart Anatomy", "Step-by-Step Reading", "Your Own Chart"],
+    desc: "Build the confidence to decode a horoscope and understand the story it reveals",
+    chips: ["Birth Chart Anatomy", "Planetary Placements", "Reading Combinations", "Practical Chart Interpretation"],
   },
   {
-    title: "04. Zodiac Signs & Houses",
-    desc: "Explore the structure of the birth chart, what each house represents, and how they work together.",
-    chips: ["12 Zodiac Signs", "12 Houses", "Sign + House Interplay"],
+    title: "04. The 12 Houses & Zodiac Signs",
+    desc: "Master what every house and zodiac sign represents to interpret every area of life with clarity.",
+    chips: ["The 12 Houses of Life", "Career, Wealth & Relationships", "Health, Family & Spiritual Growth", "12 Zodiac Signs, Elements & Characteristics"],
   },
   {
     title: "05. The Science Behind Vedic Rituals",
-    desc: "Understand what happens during a puja, mantra, or Vedic practice—and the principles behind these traditions.",
-    chips: ["Puja Principles", "Mantra Science", "Daily Practice"],
+    desc: "Discover the deeper principles behind Vedic practices and why remedies are prescribed.",
+    chips: ["Philosophy of Vedic Astrology", "Mantra & Ritual Science", "Spiritual Principles", "Conscious Living"],
   },
   {
     title: "06. Practical Remedies & Lifestyle Changes",
-    desc: "Discover actionable remedies, including mantra, diet, daily routines, and gemstones, to help navigate challenging planetary influences.",
-    chips: ["Mantra", "Diet & Routine", "Gemstones", "Dashas"],
+    desc: "Learn practical methods to navigate difficult planetary periods with greater balance and awareness.",
+    chips: ["Mantras & Daily Practices", " Gemstones & Traditional Remedies", "Lifestyle Alignment", "Planetary Timing (Dashas)"],
   },
 ];
 
@@ -520,9 +542,9 @@ function Topics() {
   return (
     <section className="py-20 md:py-24 px-6 md:px-12" style={{ background: "var(--ink)" }}>
       <div className="max-w-[900px] mx-auto">
-        <Eyebrow>—— Topics to be Covered</Eyebrow>
+        <Eyebrow leftLine>Topics to be Covered</Eyebrow>
         <h2 className="font-display mt-4 text-[36px] md:text-[48px] leading-[1.1]" style={{ color: "var(--linen)" }}>
-          15 live sessions. Every question answered in class.
+          15 Live Sessions Covering 6 Key Themes. Live Q/A In Class.
         </h2>
         <ul className="mt-8">
           {TOPICS.map((t, i) => {
@@ -577,7 +599,7 @@ function UrgencyBar() {
       className="py-3.5 px-6 text-center text-sm font-medium text-[18px] leading-[32px]"
       style={{ background: "#F0A800", color: "#2D1F0E" }}
     >
-      ⚡ Registrations for the current batch close on{" "}
+      ⚡ Registrations for the current batch Trial classes close on{" "}
       <span className="font-display italic text-[#0E0E1A]">15th July 2026</span> —{" "}
       <strong style={{ color: "#8B1A1A" }}>Only a few seats remain</strong>
     </div>
@@ -597,7 +619,7 @@ function MeetTeacher() {
       <UrgencyBar />
       <section className="py-20 md:py-[80px] px-6 md:px-12" style={{ background: "var(--ivory)" }}>
         <div className="max-w-[1366px] mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-start">
-          <div className="relative">
+          <div className="relative mr-4 md:mr-0 ">
             <img src={baniAsset} alt="Bani Singh Chadha" loading="lazy" className="rounded-2xl w-full object-cover aspect-[4/5]" />
             {/* Mobile play overlay */}
             <button
@@ -607,14 +629,14 @@ function MeetTeacher() {
             >
               <span
                 className="rounded-full flex items-center justify-center"
-                style={{ width: 64, height: 64, background: "#FFFFFF" }}
+                style={{ width: 50, height: 50, background: "#FFFFFF" }}
               >
-                <Play size={26} color="#2C2A28" fill="#2C2A28" />
+                <Play size={20} color="#2C2A28" fill="#2C2A28" />
               </span>
             </button>
           </div>
           <div>
-            <Eyebrow>— Meet the Teacher</Eyebrow>
+            <Eyebrow leftLine>Meet the Teacher</Eyebrow>
             <h2 className="font-display italic mt-4 text-[44px] md:text-[52px]" style={{ color: "#BA7530" }}>Bani Singh Chadha</h2>
             <div className="flex flex-wrap gap-2.5 mt-5">
               {["15+ Years of Experience", "Ex - NDTV", "Cardiff University"].map((c) => (
@@ -622,13 +644,13 @@ function MeetTeacher() {
               ))}
             </div>
             <div className="mt-8 space-y-5 text-[15px] leading-[1.7]" style={{ color: "" }}>
-              <p className="text-[#00000] tetxt-[16px] font-regular leading-[26px] ">For over seven years, Bani has taught Jyotish full-time to students worldwide through courses, workshops, and talks. She teaches Vedic Astrology as a spiritual tradition rooted in mantra, sadhana, and the timeless wisdom of the rishis.</p>
+              <p className="text-[#00000099] tetxt-[16px] font-regular leading-[26px] ">For over seven years, Bani has taught Jyotish full-time to students worldwide through courses, workshops, and talks. She teaches Vedic Astrology as a spiritual tradition rooted in mantra, sadhana, and the timeless wisdom of the rishis.</p>
               {/* <p>Before Jyotish, she spent 13 years in broadcast journalism at NDTV — producing flagship programming and anchoring news. That background shapes how she teaches: rigorously, without filler, for people who ask hard questions.</p> */}
             </div>
-            <div className="w-[328px] h-[2px] bg-[#E5E5E5] mt-10 mb-2  md:hidden"></div>
-            <ul className="mt-8 flex flex-col gap-10">
+            <div className="w-[328px] h-[2px] bg-[#E5E5E5] mt-10 md:mt-15 mb-2 md:mb-5  md:w-[580px]"></div>
+            <ul className="mt-10 flex flex-col gap-10">
               {creds.map(({ Icon, text }) => (
-                <li key={text} className="flex items-start gap-3 text-[14px]" style={{ color: "var(--brown)" }}>
+                <li key={text} className="flex items-center gap-3 text-[14px]" style={{ color: "var(--brown)" }}>
                   <div className="w-[50px] h-[50px] rounded-full flex items-center justify-center bg-[#F8F6F2] border-[#E2DDD5] border-[1px] shrink-0">
                     <Icon size={30} color="#B89A5A" strokeWidth={1.5} />
                   </div>
@@ -636,7 +658,7 @@ function MeetTeacher() {
                 </li>
               ))}
             </ul>
-            <button onClick={open} className="btn-pill-dark mt-9 w-full md:w-auto">Learn From Bani Directly!</button>
+            <Link to="/payment" className="btn-pill-dark mt-14 w-full md:w-auto inline-flex items-center justify-center text-center">Learn From Bani Directly!</Link>
           </div>
         </div>
       </section>
@@ -654,14 +676,14 @@ const pricingItems = [
 function PricingCard() {
   const { open } = useLeadModal();
   return (
-    <section className="relative overflow-hidden bg-ivory px-6 md:px-12 py-12 md:py-16">
+    <section className="relative overflow-hidden bg-ivory  md:px-12 py-12 md:py-16">
       {/* Chakra watermark in bottom-right corner (desktop only) */}
       <img
         src={chakraImg}
         alt=""
         className="hidden md:block absolute right-20 bottom-0 translate-x-[25%] translate-y-[25%] w-[35%] max-w-[400px] opacity-70 pointer-events-none select-none z-0"
       />
-      <div className="relative z-10 text-center mt-12 max-w-[1200px] mx-auto">
+      <div className="relative z-10 text-center mt-12 max-w-[1200px] mx-auto px-6">
         <div className="flex justify-center items-center gap-3">
           <span className="inline-block w-10 h-px bg-gold" />
           <span className="font-sans text-[12px] uppercase tracking-[0.22em] text-gold">BENEFITS FOR ALL</span>
@@ -670,21 +692,47 @@ function PricingCard() {
         <h2 className="font-display text-[40px] md:text-[72px] leading-[1.1] text-ink mt-6">
           This course builds a foundation <span className="italic text-gold">that sharpens every practice.</span>
         </h2>
-        <div className="flex flex-wrap gap-x-4 gap-y-3 justify-center mt-10 max-w-[900px] mx-auto">
+        <div className="flex flex-col md:flex-row md:flex-wrap md:justify-center gap-y-3 md:gap-x-3 mt-10 max-w-[900px] mx-auto">
           {tags.map((t) => (
-            <span key={t} className="border border-stone rounded-full px-6 py-[10px] font-sans text-[14px] text-brown bg-linen/40">
+            <span key={t} className="flex items-center justify-between md:justify-start gap-2 border border-stone rounded-full px-5 py-[10px] font-sans text-[14px] text-brown bg-linen/40 w-full md:w-auto">
               {t}
+              <span className="text-[16px] font-light leading-none" style={{ color: "#B89A5A" }}>+</span>
             </span>
           ))}
         </div>
       </div>
+
+      {/* ── 3 Feature highlights ── */}
+      <div className="relative z-10 max-w-[940px] mx-auto mt-14 grid grid-cols-1 sm:grid-cols-3 gap-8 text-center px-6">
+        {[
+          {
+            title: "Class Recordings Included",
+            desc: "Never miss a lesson—revisit every session anytime at your own pace.",
+          },
+          {
+            title: "Live AMA with Bani",
+            desc: "Get your questions answered directly through live Q&A sessions.",
+          },
+          {
+            title: "Logic-Driven Teaching",
+            desc: "Understand the principles behind Jyotish through clear explanations.",
+          },
+        ].map(({ title, desc }) => (
+          <div key={title} className="flex flex-col items-center gap-4">
+            {/* <span className="text-[18px]" style={{ color: "#B89A5A" }}></span> */}<img src={star1} alt="" />
+            <h3 className="font-display text-[16px] font-bold leading-[18px] text-center" style={{ color: "#1C1C1C" }}>{title}</h3>
+            <p className="text-[14px] leading-[23px]" style={{ color: "#3D3730", opacity: 0.75 }}>{desc}</p>
+          </div>
+        ))}
+      </div>
+
       <div
         style={{ background: "#1F2D1B" }}
-        className="relative z-10 max-w-[940px] mx-auto rounded-[20px] overflow-hidden grid grid-cols-1 lg:grid-cols-[60%_40%] mt-20"
+        className="relative z-10 max-w-[940px] mx-auto md:rounded-[20px]  overflow-hidden grid grid-cols-1 lg:grid-cols-[60%_40%] mt-20"
       >
         <div className="p-8 md:p-12">
           <span
-            style={{ background: "#ADAD16" }}
+            style={{ background: "#606009" }}
             className="inline-block rounded-full px-[14px] py-[5px] font-sans text-[11px] uppercase tracking-[0.13em] text-linen"
           >
             • TRIAL CLASS REGISTRATIONS CLOSE ON 15 JULY 2026
@@ -708,9 +756,9 @@ function PricingCard() {
             ))}
           </div>
           <div className="mt-8 flex gap-3 flex-wrap">
-            <button onClick={open} className="cursor-pointer rounded-full bg-linen text-ink px-7 py-[13px] font-sans text-[14px] font-medium">
+            <Link to="/payment" className="cursor-pointer rounded-full bg-linen text-ink px-7 py-[13px] font-sans text-[14px] font-medium inline-flex items-center justify-center text-center">
               Join Class Now
-            </button>
+            </Link>
             <button onClick={open} className="cursor-pointer rounded-full border-[1.5px] border-linen/30 text-linen px-7 py-[13px] font-sans text-[14px]">
               Request a Callback
             </button>
@@ -844,7 +892,7 @@ function TestimonialCard({ t, onPlay }: { t: Testimonial; onPlay: (url: string) 
             >
               <span
                 className="rounded-full flex items-center justify-center"
-                style={{ width: 32, height: 32, background: "rgba(0,0,0,0.7)" }}
+                style={{ width: 32, height: 32, background: "#634F22" }}
               >
                 <Play size={14} color="#fff" fill="#fff" />
               </span>
@@ -901,7 +949,7 @@ function Testimonials() {
         >
           <ChevronRight size={18} color="#fff" />
         </button>
-        <button onClick={open} className="ml-auto btn-pill-light">Join 500+ Students — Enrol Now →</button>
+        <Link to="/payment" className="m-auto md:m-0 md:ml-auto btn-pill-black inline-flex items-center justify-center text-center">Enrol Now</Link>
       </div>
     </section>
   );
@@ -915,6 +963,7 @@ function FAQ() {
     ["How are classes conducted?", "Live on Zoom, every Tuesday and Thursday, 12–1 PM IST."],
     ["What is the course fee?", "₹15,000 + GST i.e 17700 INR.\u00a0"],
     ["Is there a free trial?", "Yes! Register for the free trial class on 13 August 2026 — no payment required."],
+    ["", ""],
   ];
   const [open, setOpen] = useState<number | null>(0);
   return (
@@ -950,7 +999,7 @@ function FinalCTA() {
 
       <div className="text-center">
         <div className="mt-2">
-          <Eyebrow withLines color="#B89A5A">Join the Course Now</Eyebrow>
+          <Eyebrow withLines color="#9F9065">Join the Course Now</Eyebrow>
         </div>
         <h2 className="font-display mt-10 text-[34px] md:text-[52px] leading-[1.1] max-w-[900px] mx-auto" style={{ color: "var(--ink)" }}>
           Begin Your Journey to <span className="italic" style={{ color: "var(--gold)" }}>Vedic Astrology</span>{" "}
@@ -992,16 +1041,55 @@ function FinalCTA() {
 
 function Footer() {
   return (
-    <footer className="py-5 px-6 md:px-12 flex flex-col sm:flex-row justify-between items-center gap-3 mb-24 md:mb-0" style={{ background: "var(--ink)" }}>
-      <span className="font-display italic text-xl" style={{ color: "var(--linen)" }}>Bani_Live</span>
-      <span className="text-xs" style={{ color: "rgba(242,237,230,0.4)" }}>© 2026 Bani Singh Chadha · All rights reserved</span>
+    <footer className="py-12 md:py-16 px-6 md:px-24 flex flex-col md:flex-row justify-between items-center md:items-start gap-8 md:gap-4 mb-24 md:mb-0" style={{ background: "var(--ink)" }}>
+      {/* Left/Top: Brand & Copyright */}
+      <div className="flex flex-col items-center md:items-start gap-4 md:gap-6 w-full md:w-auto">
+        <span className="font-display italic text-[24px] md:text-[32px] text-linen">Bani_Live</span>
+        <span className="hidden md:inline text-[13px] md:text-[14px]" style={{ color: "rgba(242,237,230,0.4)" }}>
+          © 2026 Bani Singh Chadha · All rights reserved
+        </span>
+      </div>
+
+      {/* Middle/Right: Contacts */}
+      <div className="flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-12 md:mt-2">
+        <a
+          href="https://wa.me/918368846824"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-3 text-[15px] md:text-[16px] transition-all hover:opacity-80"
+          style={{ color: "#B89A5A" }}
+        >
+          {/* Chat bubble icon with horizontal lines inside */}
+          <svg className="w-5 h-5 shrink-0 fill-current" viewBox="0 0 24 24">
+            <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z" />
+          </svg>
+          <span className="font-sans font-medium tracking-wide">Whatsapp Us : +91 8368846824</span>
+        </a>
+
+        <a
+          href="mailto:support@banilive.com"
+          className="flex items-center gap-3 text-[15px] md:text-[16px] transition-all hover:opacity-80"
+          style={{ color: "#B89A5A" }}
+        >
+          {/* Envelope icon */}
+          <svg className="w-5 h-5 shrink-0 fill-current" viewBox="0 0 24 24">
+            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-.4 4.25l-7.07 4.42c-.32.2-.74.2-1.06 0L4.4 8.25a.85.85 0 0 1-.4-.72c0-.6.65-.96 1.15-.65l6.85 4.28 6.85-4.28c.5-.31 1.15.05 1.15.65 0 .3-.16.58-.4.72z" />
+          </svg>
+          <span className="font-sans font-medium tracking-wide">Email : support@banilive.com</span>
+        </a>
+      </div>
+
+      {/* Mobile Copyright (bottom) */}
+      <span className="md:hidden text-[13px] text-center mt-2" style={{ color: "rgba(242,237,230,0.4)" }}>
+        © 2026 Bani Singh Chadha · All rights reserved
+      </span>
     </footer>
   );
 }
 
 function WhatsAppFAB() {
   return (
-    <a href={WA_GENERAL} target="_blank" rel="noreferrer" aria-label="WhatsApp" className="fixed bottom-32 md:bottom-32 xl:bottom-8 right-6 z-[200] w-14 h-14 rounded-full flex items-center justify-center transition-transform hover:scale-110" style={{ background: "#25D366", boxShadow: "0 4px 20px rgba(37,211,102,0.4)" }}>
+    <a href={WA_GENERAL} target="_blank" rel="noreferrer" aria-label="WhatsApp" className="fixed bottom-[150px]  md:bottom-[100px] xl:bottom-8 right-6 z-[200] w-14 h-14 rounded-full flex items-center justify-center transition-transform hover:scale-110" style={{ background: "#25D366", boxShadow: "0 4px 20px rgba(37,211,102,0.4)" }}>
       <svg viewBox="0 0 24 24" width="28" height="28" fill="#fff"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-.607zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.547-.085 1.758-.719 2.006-1.413.247-.694.247-1.289.173-1.413z" /></svg>
     </a>
   );

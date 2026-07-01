@@ -114,6 +114,19 @@
   background: #fff;
 }
 
+.btn-pill-black {
+  background: #000000;
+  color: #ffffff;
+  border-radius: 9999px;
+  padding: 14px 28px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.btn-pill-light:hover {
+  background: #fff;
+}
+
 .btn-pill-ghost {
   border: 1.5px solid rgba(242, 237, 230, 0.4);
   color: var(--linen);
